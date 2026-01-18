@@ -316,14 +316,18 @@ Acceptance criteria:
 ## Next Steps (Priority Order)
 
 ### Immediate (this week)
-1. **Task T5**: Implement cross-repo integration harness
-   - Create unified test runner that imports from all 5 repos
-   - Add cross-verification matrix (e.g., closedform vs generating-functional)
-   - Generate integration validation report (CSV/JSON)
+1. **Task T5**: ✅ Implement cross-repo integration harness
+   - ✅ Create unified test runner that imports from all 5 repos
+   - ✅ Add cross-verification matrix (closedform vs generating-functional vs SymPy)
+   - ✅ Generate integration validation report (JSON)
+   - **Results**: 6/6 tests passing — all implementations agree!
+   - **Output**: `data/integration_validation_report.json`
 
-2. **Task T2**: Extend golden reference datasets with higher-n cases
-   - Add 12j/15j spot checks (high precision via mpmath)
-   - Document stability regimes and failure modes
+2. **Task T2**: 🔄 Extend golden reference datasets with higher-n cases
+   - ✅ 9j high-precision dataset (mpmath 50 dps, 7 test cases)
+   - ⚠️  12j/15j spot checks pending (requires specialized implementations)
+   - ✅ Document stability regimes and failure modes
+   - **Output**: `data/higher_n_reference_9j.json`
 
 ### Short-term (next 2 weeks)
 3. **Task P2**: Begin merging LaTeX sources
