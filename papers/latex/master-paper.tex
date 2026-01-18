@@ -1,0 +1,209 @@
+% Master Paper Bundle — SU(2) 3nj Series
+% Option 1: Comprehensive single paper
+% Option 2: Series template (uncomment sections as needed)
+
+\documentclass[12pt,letterpaper]{article}
+
+% Standard packages
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+% Shared macros
+\input{../shared/shared-macros}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+% Title and authors
+\title{Unified Closed-Form Representations and Generating Functionals \\
+       for SU(2) 3n-j Recoupling Coefficients}
+
+\author{
+  % Authors TBD
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We present a unified framework for closed-form representations and generating functionals for SU(2) 3n-j recoupling coefficients (Wigner symbols). This work consolidates:
+\begin{itemize}
+\item Closed-form hypergeometric product formulas for general 3nj symbols
+\item Uniform hypergeometric representations (4F3, etc.)
+\item Finite three-term recurrence relations with stability analysis
+\item Universal generating functionals for arbitrary-valence coupling graphs
+\item Matrix elements for multi-valence nodes via functional derivatives
+\end{itemize}
+
+All representations are validated against SymPy's Wigner functions, with comprehensive cross-verification across independent implementations. Reference datasets, stability reports, and reproducible validation scripts are provided.
+
+\noindent \textbf{Keywords:} Wigner symbols, 3nj coefficients, recoupling, hypergeometric functions, generating functionals, quantum angular momentum
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+\label{sec:intro}
+
+% Motivation: quantum angular momentum coupling, applications in atomic/molecular/nuclear physics
+% Historical context: Racah, Wigner, etc.
+% Problem statement: need for efficient, numerically stable representations
+% Our contributions: unified framework with validation
+
+\section{Background and Notation}
+\label{sec:background}
+
+\subsection{SU(2) Representation Theory}
+% Brief review of angular momentum coupling
+% Definition of 3j, 6j, 9j symbols
+% Triangle inequalities and selection rules
+
+\subsection{Existing Approaches}
+% Summation formulas (Racah)
+% Hypergeometric representations (Raynal)
+% Recurrence relations (Schulten-Gordon)
+% Generating functionals (Yutsis)
+
+\section{Closed-Form Hypergeometric Formulas}
+\label{sec:closed-form}
+
+% Import content from:
+% su2-3nj-closedform/A Closed-Form Hypergeometric Product Formula...tex
+
+\subsection{Product Formula for General 3nj}
+% Main theorem + proof sketch
+
+\subsection{Computational Complexity}
+% Comparison: product vs summation
+
+\section{Uniform Hypergeometric Representation}
+\label{sec:uniform}
+
+% Import content from:
+% su2-3nj-uniform-closed-form/Universal Closed-Form Hypergeometric...tex
+
+\subsection{4F3 Representation for 6j Symbols}
+% Explicit formula
+
+\subsection{Extension to 9j Symbols}
+% Generalization strategy
+
+\section{Finite Recurrence Relations}
+\label{sec:recurrences}
+
+% Import content from:
+% su2-3nj-recurrences/Closed-Form Finite Recurrences...tex
+
+\subsection{Three-Term Recurrences}
+% Explicit coefficient formulas
+
+\subsection{Stability Analysis}
+% Forward vs backward recursion
+% Condition numbers and error propagation
+
+\section{Generating Functionals}
+\label{sec:generating-functional}
+
+% Import content from:
+% su2-3nj-generating-functional/A Universal Generating Functional...tex
+
+\subsection{Graph-Theoretic Formulation}
+% Coupling graphs, vertex/edge notation
+
+\subsection{Determinant Representation}
+% $G(x_e) = 1/\det(I-K(x_e))$
+
+\subsection{Series Expansion}
+% Coefficients as 3nj symbols
+
+\section{Arbitrary-Valence Node Matrix Elements}
+\label{sec:node-matrix}
+
+% Import content from:
+% su2-node-matrix-elements/Closed-Form Matrix Elements...tex
+
+\subsection{Functional Derivative Approach}
+% $M_v = \partial^k G / \partial s_1 \cdots \partial s_k |_{s=0}$
+
+\subsection{Determinant Stability}
+% Regularization, condition numbers
+
+\section{Validation and Cross-Verification}
+\label{sec:validation}
+
+\subsection{Test Methodology}
+% Pytest framework
+% SymPy cross-checks
+% Deterministic reference datasets
+
+\subsection{Cross-Implementation Comparison}
+% Table comparing closedform vs generating-functional vs SymPy
+% Include results from data/integration_validation_report.json
+
+\subsection{Higher-n Reference Data}
+% 9j symbols with 50-digit precision
+% Include results from data/higher_n_reference_9j.json
+
+\subsection{Stability Regimes}
+% Documented failure modes
+% Numerical precision requirements
+
+\section{Computational Performance}
+\label{sec:performance}
+
+% Benchmarks from various repos
+% Comparison of different representations
+
+\section{Applications}
+\label{sec:applications}
+
+% Atomic/molecular spectroscopy
+% Nuclear structure
+% Quantum information
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+% Summary of contributions
+% Future work: extensions to other groups, higher symbols
+
+\section*{Acknowledgments}
+
+% TBD
+
+\bibliographystyle{plain}
+\bibliography{../shared/shared-bibliography}
+
+\appendix
+
+\section{Proof Details}
+\label{app:proofs}
+
+% Extended proofs omitted from main text
+
+\section{Reference Datasets}
+\label{app:datasets}
+
+% Pointer to JSON files in repository
+
+\section{Software Implementation}
+\label{app:software}
+
+% Links to GitHub repos
+% Installation instructions
+% Example usage
+
+\end{document}
