@@ -1,14 +1,33 @@
-# SU(2) 3n-j Series Hub
+# SU(2) 3n-j Series — Integration & Publication Hub
 
-This repository is the integration + publication hub for the SU(2) 3n-j series:
+This repository serves as the central hub for integrating, validating, and publishing work across the SU(2) 3nj recoupling series.
 
-- Unified planning docs (TODO, implementation summary links)
-- Paper bundling (master LaTeX tree)
-- Cross-repo validation entrypoints
+**Target**: 2–3 paper series or single comprehensive JMP-style paper (Q2 2026 submission).
 
-Source repos remain the authoritative implementations:
-- su2-3nj-closedform
-- su2-3nj-uniform-closed-form
-- su2-3nj-recurrences
-- su2-3nj-generating-functional
-- su2-node-matrix-elements
+## Source Repositories
+
+The authoritative implementations remain in their respective repos:
+- [su2-3nj-closedform](https://github.com/arcticoder/su2-3nj-closedform) — 27 tests ✓
+- [su2-3nj-uniform-closed-form](https://github.com/arcticoder/su2-3nj-uniform-closed-form) — 45 tests ✓
+- [su2-3nj-recurrences](https://github.com/arcticoder/su2-3nj-recurrences) — 18 tests ✓
+- [su2-3nj-generating-functional](https://github.com/arcticoder/su2-3nj-generating-functional) — 43 tests ✓
+- [su2-node-matrix-elements](https://github.com/arcticoder/su2-node-matrix-elements) — 15 tests ✓
+
+## Hub Contents
+
+- **[docs/SU2-TODO.md](docs/SU2-TODO.md)**: Active cross-repo execution plan
+- **papers/latex/**: Master LaTeX bundle (coming soon)
+- **papers/related/**: Local literature archive (ignored by git)
+- **scripts/**: Cross-repo integration scripts (coming soon)
+
+## Current Status
+
+**Phase 1 (core implementations)**: ✅ Complete — all 5 repos have pytest + validation harnesses
+
+**Phase 2 (integration + publication prep)**: 🔄 In progress
+- ✅ Import fixes (generating-functional)
+- ✅ Test conversions (uniform-closed-form: +31 tests)
+- ⚠️  Cross-repo integration harness: Pending
+- ⚠️  Master LaTeX bundle: Pending
+
+Last updated: 2026-01-18
