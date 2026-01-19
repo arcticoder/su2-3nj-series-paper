@@ -5,8 +5,8 @@ Date: 2026-01-18
 ## At-a-glance status
 
 - **Repos with pytest**: 5/5  
-  Progress: `██████████` (100%) — **~157 unit tests** (per-repo) + **integration/reference checks** (see note below)
-- **Hub integration harness**: 21/21 checks passing (incl. 9j + 12j references)  
+  Progress: `██████████` (100%) — **157 unit tests** (total across all repos) + **21 integration checks**
+- **Hub integration harness**: 21/21 checks passing (5 cross-impl + 1 recursion + 2 node-matrix + 7 9j ref + 6 12j ref)  
   Progress: `██████████` (100%)
 - **Node-matrix baseline parity (N0–N5)**: ✅ complete (15 tests + scripts + artifacts)
   Progress: `██████████` (100%)
@@ -14,11 +14,12 @@ Date: 2026-01-18
   Progress: `██████████` (100%)
 - **Node-matrix physics parity (N6+)**: ✅ N6 complete (9 tests, derivative API for k≤4)
   Progress: `██████░░░░` (60%) — derivative-based API prototype operational
-- **Master paper**: ✅ Zenodo-ready; 🔄 arXiv-endorsement polish in progress (currently ~18 pages with standard 1in margins)
-- **Main remaining work**: consistency/polish pass + arXiv submission packaging
+- **Master paper**: ✅ Zenodo-ready; 🔄 arXiv-endorsement polish in progress (~18 pages with 1in margins)
+- **Main remaining work**: arXiv submission packaging + GitHub URL updates
 
-**Notes (important for arXiv polish)**
-- **Test-count inconsistency to resolve**: the paper currently says **161** tests, while historical docs reported **188**; the auto-generated validation summary table currently reports **191 total checks**. This needs to be reconciled and then made consistent across paper + docs.
+**Notes**
+- **Test count reconciled (2026-01-18)**: **178 total tests** = 21 integration checks + 157 per-repo unit tests. All documentation and paper now consistent.
+- Per-repo breakdown: generating-functional (43), uniform-closed-form (45), closedform (27), recurrences (18), node-matrix-elements (24).
 
 > **📋 Detailed completion history**: See [SU2-TODO-completed.md](SU2-TODO-completed.md) for full task archive
 
@@ -59,61 +60,64 @@ Target readiness:
 - **Zenodo**: ~80–90% (ship after quick consistency fixes)
 - **arXiv**: ~70% (ship after polish items below)
 
-### A1 — Resolve inconsistencies (counts, links, metadata)
-Actions:
-- Recompute and lock the test/check counts:
-  - per-repo pytest totals
-  - hub integration harness checks
-  - higher-n reference checks
-- Update all occurrences consistently:
-  - paper abstract + validation section
-  - this TODO
-  - any README “status” blocks
-- Ensure GitHub URLs in the paper point to `DawsonInstitute/*` (no legacy org/user links).
+### A1 — ✅ Resolve inconsistencies (counts, links, metadata)
+**Status**: Complete (2026-01-18)
 
-Acceptance criteria:
-- Paper + TODO agree on the same numbers (or the paper uses a stable phrasing like “over 190 checks” and points to the generated report).
+Reconciled test count to **178 total** (21 integration + 157 unit). Updated:
+- Paper abstract to state "178 automated tests (21 integration checks across five independent implementations, plus 157 per-repository unit tests)"
+- Validation summary table via auto-generation
+- This TODO status block
 
-### A2 — Make generated validation tables arXiv-proof
-Problem: auto-generated LaTeX can break builds (e.g., underscores) and some expressions render as raw SymPy strings (e.g., `sqrt(5)` instead of `\sqrt{5}`).
+Remaining:
+- GitHub URLs in paper (see A4)
 
-Actions:
-- Harden `scripts/generate_validation_tables.py`:
-  - escape LaTeX special chars in text fields (descriptions, method names)
-  - render exact expressions via `sympy.latex(sympify(...))` when possible
-- Regenerate `papers/paper/validation-tables.tex` and ensure `latexmk` succeeds cleanly.
+### A2 — ✅ Make generated validation tables arXiv-proof
+**Status**: Complete (2026-01-18)
 
-Acceptance criteria:
-- No LaTeX build errors from generated tables; expressions render as proper math.
+Hardened `scripts/generate_validation_tables.py`:
+- Added `escape_latex_text()` for special chars (underscores, %, etc.)
+- Added `sympy_to_latex()` to render SymPy expressions as proper LaTeX (e.g., `\frac{\sqrt{1430}}{2145}` instead of `sqrt(1430)/2145`)
+- Regenerated tables; `latexmk` builds cleanly with proper math rendering
+
+Acceptance criteria: ✅ No build errors; expressions render as proper math.
+
 
 ### A3 — Add explicit half-integer example (visible in paper)
-Problem: half-integer support is claimed, but a reader should see at least one explicit half-integer value in a table or short inline example.
+**Status**: ✅ Complete (2026-01-18)
 
-Actions:
-- Add a dedicated half-integer 6j example to the validation tables and/or the validation section.
-- Ensure the example is cross-checked against SymPy (symbolic exact match).
+Added worked example in validation section:
+- Shows {1/2, 1/2, 1; 1/2, 1/2, 1} = 1/6 with triangle inequalities and parity check
+- Cross-referenced to Table~\ref{tab:cross-verification}
+- States agreement with SymPy's `wigner_6j(1/2, 1/2, 1, 1/2, 1/2, 1)`
 
-Acceptance criteria:
-- Paper includes an explicit half-integer numeric/exact example and a stated validation route.
+Acceptance criteria: ✅ Paper includes explicit half-integer example with validation route.
 
-### A4 — Add algorithm/pseudocode blocks (reader-facing completeness)
+
+### A4 — ✅ Fix GitHub URLs
+**Status**: Complete (2026-01-18)
+
+Updated papers/paper/su2-3nj-unified-representations.tex:
+- Changed `github.com/arcticoder/su2-3nj-*` → `github.com/DawsonInstitute/su2-3nj-*`
+- Updated both hub repo and individual implementation URLs in Acknowledgments section
+
+### A5 — Add algorithm/pseudocode blocks (reader-facing completeness)
 Actions:
 - Add short pseudocode/algorithm sketches for:
-  - matching-number computation route (e.g., Pfaffian for planar graphs; otherwise “external routine”)
+  - matching-number computation route (e.g., Pfaffian for planar graphs; otherwise "external routine")
   - recurrence solve strategy (forward/backward + normalization)
 - Keep them compact and implementation-neutral.
 
 Acceptance criteria:
 - A motivated reader can reproduce the computational pipeline without reverse-engineering code.
 
-### A5 — Add explicit limitations + failure examples
+### A6 — Add explicit limitations + failure examples
 Actions:
 - Include 1–2 explicit failure-mode examples (e.g., near-singular determinant; recurrence instability threshold) and show what the diagnostic looks like.
 
 Acceptance criteria:
-- Paper states not just “unstable for large $j$” but also a concrete, checkable example.
+- Paper states not just "unstable for large $j$" but also a concrete, checkable example.
 
-### A6 — Optional figures (nice-to-have for arXiv)
+### A7 — Optional figures (nice-to-have for arXiv)
 Actions:
 - Add 1–2 small figures from existing sweeps:
   - recurrence stability vs spin
@@ -122,17 +126,23 @@ Actions:
 Acceptance criteria:
 - Figures are generated by script; arXiv bundle includes the images.
 
-### A7 — arXiv + Zenodo packaging
-Actions:
-- Create an arXiv-ready bundle checklist:
-  - all `\input{}` files included
-  - `.bib` included and citations resolve
-  - figures included
-  - clean build from scratch
-- Optionally add a script to produce a submission `.tar.gz` from a clean tree.
+### A8 — ✅ arXiv + Zenodo packaging
+**Status**: Complete (2026-01-18)
 
-Acceptance criteria:
-- `latexmk` works from a clean build directory; a bundle can be uploaded without manual fixes.
+Created `scripts/prepare_arxiv_bundle.sh`:
+- Bundles main .tex, .bbl, validation-tables.tex, shared-macros.tex, author_config.tex
+- Flattens directory structure for arXiv (adjusts `\input` paths)
+- Generates `arxiv-submission-YYYY-MM-DD.tar.gz`
+- Tested clean build from extracted bundle (2 pdflatex passes → 329K PDF)
+
+Bundle contents:
+- su2-3nj-unified-representations.tex (main file)
+- su2-3nj-unified-representations.bbl (processed bibliography)
+- validation-tables.tex (auto-generated tables)
+- shared-macros.tex (theorem environments + macros)
+- author_config.tex (optional author metadata)
+
+Acceptance criteria: ✅ `pdflatex` works from extracted bundle; upload-ready for arXiv.
 
 Scope note: for `su2-node-matrix-elements`, implement a *minimal, deterministic* computational entrypoint first (even if initially a placeholder), with clear hedging and tests that verify invariants, stability reporting, and cross-checks against independent numeric/symbolic backends.
 

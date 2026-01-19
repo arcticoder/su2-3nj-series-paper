@@ -1,0 +1,60 @@
+% shared-macros.tex
+% Shared LaTeX macros for SU(2) 3nj series papers
+% To be included via: \input{../shared/shared-macros}
+
+% Mathematical notation
+\newcommand{\Rational}{\mathbb{Q}}
+\newcommand{\Integer}{\mathbb{Z}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Complex}{\mathbb{C}}
+
+% Quantum angular momentum conventions
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle#1|}
+\newcommand{\braket}[2]{\langle#1|#2\rangle}
+
+% 3nj symbols
+\newcommand{\threej}[6]{\begin{pmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \end{pmatrix}}
+\newcommand{\sixj}[6]{\begin{Bmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \end{Bmatrix}}
+\newcommand{\ninej}[9]{\begin{Bmatrix} #1 & #2 & #3 \\ #4 & #5 & #6 \\ #7 & #8 & #9 \end{Bmatrix}}
+
+% Wigner D-matrices
+\newcommand{\Dmat}[3]{D^{#1}_{#2,#3}}
+
+% Hypergeometric functions
+\newcommand{\hypergeo}[5]{{}_{#1}F_{#2}\!\left[\begin{matrix} #3 \\ #4 \end{matrix}; #5\right]}
+\newcommand{\hypergeoF}[3]{{}_{#1}F_{#2}\!\left(#3\right)}
+
+% Pochhammer symbol (rising factorial)
+\newcommand{\pochhammer}[2]{(#1)_{#2}}
+
+% Summation shortcuts
+\newcommand{\sumk}{\sum_{k}}
+\newcommand{\sumt}{\sum_{t}}
+
+% Special cases
+\newcommand{\CG}[6]{\langle #1\,#2; #3\,#4 | #5\,#6 \rangle}  % Clebsch-Gordan
+
+% Triangle inequality notation (\triangle conflicts with built-in, use \Delta directly)
+% \newcommand{\triangle}{\Delta}
+\newcommand{\tritest}[3]{\Delta(#1,#2,#3)}
+
+% Graph theory (for generating functionals)
+\newcommand{\vertex}{\mathcal{V}}
+\newcommand{\edge}{\mathcal{E}}
+\newcommand{\graph}{\mathcal{G}}
+
+% Recurrence notation
+\newcommand{\reccoef}[1]{c_{#1}}   % recurrence coefficients
+
+% Abbreviations
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\cond}{cond}  % condition number
+
+% Theorem-like environments (can be customized per paper)
+% \newtheorem{theorem}{Theorem}
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{proposition}[theorem]{Proposition}
+% \newtheorem{corollary}[theorem]{Corollary}

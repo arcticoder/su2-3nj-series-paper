@@ -6,11 +6,56 @@ Implements Task P4: Validation section + tables
 - Reads integration_validation_report.json
 - Reads higher_n_reference_9j.json
 - Generates LaTeX tables for paper inclusion
+
+Enhancements (Task A2):
+- Escape LaTeX special characters in text fields
+- Render SymPy expressions as proper LaTeX via sympy.latex()
 """
 
 import json
 import sys
 from pathlib import Path
+
+try:
+    import sympy as sp
+    SYMPY_AVAILABLE = True
+except ImportError:
+    SYMPY_AVAILABLE = False
+    print("Warning: SymPy not available; expressions will render as strings")
+
+
+def escape_latex_text(text):
+    """Escape LaTeX special characters in plain text fields."""
+    replacements = {
+        '_': r'\_',
+        '%': r'\%',
+        '$': r'\$',
+        '&': r'\&',
+        '#': r'\#',
+        '{': r'\{',
+        '}': r'\}',
+        '~': r'\textasciitilde{}',
+        '^': r'\textasciicircum{}',
+    }
+    for char, escaped in replacements.items():
+        text = text.replace(char, escaped)
+    return text
+
+
+def sympy_to_latex(expr_str):
+    """
+    Convert a SymPy expression string to LaTeX.
+    Falls back to escaped text if SymPy is unavailable or parsing fails.
+    """
+    if not SYMPY_AVAILABLE:
+        return escape_latex_text(expr_str)
+    
+    try:
+        expr = sp.sympify(expr_str)
+        return sp.latex(expr)
+    except (ValueError, TypeError, sp.SympifyError):
+        # Not a valid SymPy expression; treat as plain text
+        return escape_latex_text(expr_str)
 
 
 def generate_integration_table(report_data):
@@ -28,7 +73,7 @@ def generate_integration_table(report_data):
     latex.append("\\hline")
     
     for test in report_data["tests"][:5]:  # First 5 are the main cross-checks
-        desc = test["description"]
+        desc = escape_latex_text(test["description"])
         spins = ", ".join(test["spins"])
         
         if test["status"] == "PASS":
@@ -36,10 +81,10 @@ def generate_integration_table(report_data):
             gen_val = test["implementations"].get("generating_functional", "—")
             closed_val = test["implementations"].get("closed_form", "—")
             
-            # Format values for LaTeX (escape special chars if needed)
-            sympy_latex = f"${sympy_val}$" if sympy_val != "—" else sympy_val
-            gen_latex = f"${gen_val}$" if gen_val != "—" else gen_val
-            closed_latex = f"${closed_val}$" if closed_val != "—" else closed_val
+            # Render SymPy expressions as LaTeX; fallback to plain text
+            sympy_latex = f"${sympy_to_latex(sympy_val)}$" if sympy_val != "—" else sympy_val
+            gen_latex = f"${sympy_to_latex(gen_val)}$" if gen_val != "—" else gen_val
+            closed_latex = f"${sympy_to_latex(closed_val)}$" if closed_val != "—" else closed_val
             
             latex.append(f"{desc} & ({spins}) & {sympy_latex} & {gen_latex} & {closed_latex} \\\\")
     
@@ -67,7 +112,7 @@ def generate_9j_reference_table(ref_data):
     latex.append("\\hline")
     
     for result in ref_data["results"]:
-        desc = result.get("description", "unknown")
+        desc = escape_latex_text(result.get("description", "unknown"))
         exact = result.get("exact", "N/A")
         status = result.get("status", "unknown")
         
@@ -77,8 +122,8 @@ def generate_9j_reference_table(ref_data):
         else:
             exact_display = exact
         
-        # Format for LaTeX
-        exact_latex = f"${exact_display}$" if exact != "N/A" else exact_display
+        # Render SymPy expressions as LaTeX
+        exact_latex = f"${sympy_to_latex(exact_display)}$" if exact != "N/A" else exact_display
         status_mark = "\\checkmark" if status == "success" else "\\times"
         
         latex.append(f"{desc} & {exact_latex} & {status_mark} \\\\")
@@ -107,7 +152,7 @@ def generate_12j_reference_table(ref_data):
     latex.append("\\hline")
     
     for result in ref_data["results"]:
-        desc = result.get("description", "unknown")
+        desc = escape_latex_text(result.get("description", "unknown"))
         exact = result.get("exact", "N/A")
         status = result.get("status", "unknown")
         
@@ -117,14 +162,15 @@ def generate_12j_reference_table(ref_data):
         else:
             exact_display = exact
         
-        # Format for LaTeX
-        exact_latex = f"${exact_display}$" if exact != "N/A" else exact_display
+        # Render SymPy expressions as LaTeX
+        exact_latex = f"${sympy_to_latex(exact_display)}$" if exact != "N/A" else exact_display
         status_mark = "\\checkmark" if status == "success" else "\\times"
         
         latex.append(f"{desc} & {exact_latex} & {status_mark} \\\\")
     
     latex.append("\\hline")
-    latex.append(f"\\multicolumn{{3}}{{l}}{{Method: {ref_data.get('method', 'N/A')}, Precision: {ref_data['precision_dps']} dps}} \\\\")
+    method_escaped = escape_latex_text(ref_data.get('method', 'N/A'))
+    latex.append(f"\\multicolumn{{3}}{{l}}{{Method: {method_escaped}, Precision: {ref_data['precision_dps']} dps}} \\\\")
     latex.append("\\hline")
     latex.append("\\end{tabular}")
     latex.append("\\end{table}")
@@ -133,7 +179,13 @@ def generate_12j_reference_table(ref_data):
 
 
 def generate_summary_table(integration_data, ref_9j_data, ref_12j_data):
-    """Generate summary statistics table."""
+    """
+    Generate summary statistics table.
+    
+    Note: The integration report already *includes* 9j and 12j checks, so we
+    report them separately to show test-type breakdown but avoid double-counting
+    in the total.
+    """
     
     latex = []
     latex.append("% Summary of validation coverage")
@@ -146,40 +198,27 @@ def generate_summary_table(integration_data, ref_9j_data, ref_12j_data):
     latex.append("Test Suite & Tests & Pass Rate \\\\")
     latex.append("\\hline")
     
-    # Integration tests
+    # Integration tests (already includes 9j + 12j in the JSON report)
     int_passed = integration_data["summary"]["passed"]
     int_total = int_passed + integration_data["summary"]["failed"] + integration_data["summary"]["skipped"]
     int_rate = f"{100 * int_passed / int_total:.0f}\\%" if int_total > 0 else "—"
-    latex.append(f"Cross-implementation & {int_total} & {int_rate} \\\\")
+    latex.append(f"Hub integration (all checks) & {int_total} & {int_rate} \\\\")
     
-    # 9j reference tests
-    ref_9j_passed = ref_9j_data["stability_analysis"]["successful"]
-    ref_9j_total = ref_9j_data["stability_analysis"]["total_cases"]
-    ref_9j_rate = f"{100 * ref_9j_passed / ref_9j_total:.0f}\\%" if ref_9j_total > 0 else "—"
-    latex.append(f"9j high-precision & {ref_9j_total} & {ref_9j_rate} \\\\")
-    
-    # 12j reference tests
-    ref_12j_passed = ref_12j_data["stability_analysis"]["successful"]
-    ref_12j_total = ref_12j_data["stability_analysis"]["total_cases"]
-    ref_12j_rate = f"{100 * ref_12j_passed / ref_12j_total:.0f}\\%" if ref_12j_total > 0 else "—"
-    latex.append(f"12j high-precision & {ref_12j_total} & {ref_12j_rate} \\\\")
-    
-    # Per-repo tests (from session data)
+    # Per-repo unit tests (from known counts; update as repos evolve)
     repo_tests = [
-        ("su2-3nj-generating-functional", 43),
-        ("su2-3nj-uniform-closed-form", 45),
-        ("su2-3nj-closedform", 27),
-        ("su2-3nj-recurrences", 18),
-        ("su2-node-matrix-elements", 24),
+        ("generating-functional unit tests", 43),
+        ("uniform-closed-form unit tests", 45),
+        ("closedform unit tests", 27),
+        ("recurrences unit tests", 18),
+        ("node-matrix-elements unit tests", 24),
     ]
     
-    for repo, count in repo_tests:
-        repo_short = repo.replace("su2-3nj-", "").replace("su2-", "")
-        latex.append(f"{repo_short} unit tests & {count} & 100\\% \\\\")
+    for name, count in repo_tests:
+        latex.append(f"{name} & {count} & 100\\% \\\\")
     
     latex.append("\\hline")
-    total_tests = int_total + ref_9j_total + ref_12j_total + sum(c for _, c in repo_tests)
-    total_passed = int_passed + ref_9j_passed + ref_12j_passed + sum(c for _, c in repo_tests)
+    total_tests = int_total + sum(c for _, c in repo_tests)
+    total_passed = int_passed + sum(c for _, c in repo_tests)
     total_rate = f"{100 * total_passed / total_tests:.0f}\\%" if total_tests > 0 else "—"
     latex.append(f"\\textbf{{Total}} & \\textbf{{{total_tests}}} & \\textbf{{{total_rate}}} \\\\")
     latex.append("\\hline")
