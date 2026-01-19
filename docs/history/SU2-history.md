@@ -217,7 +217,7 @@ All work is well-documented, deterministic, and ready for publication use. The c
 - Committed: 802115d
 
 ✅ **#6 — Hub repo setup**
-- Created public repo: `arcticoder/su2-3nj-series-paper`
+- Created public repo: `DawsonInstitute/su2-3nj-series-paper`
 - Branch renamed: master → main
 - Moved planning docs and literature folder
 - Updated workspace configuration
@@ -288,7 +288,7 @@ Current session accomplishments:
 - node-matrix: 15 tests
 - **Plus**: 6 integration tests (cross-repo validation)
 
-All work committed and pushed to [su2-3nj-series-paper](https://github.com/arcticoder/su2-3nj-series-paper) main branch.
+All work committed and pushed to [su2-3nj-series-paper](https://github.com/DawsonInstitute/su2-3nj-series-paper) main branch.
 <!-- ------ -->
 - Renamed the main draft from master-paper.tex to the descriptive filename you suggested and moved paper build assets into a dedicated folder: su2-3nj-unified-representations.tex.
 - Updated the build + table pipeline to match the new structure:

@@ -7,11 +7,11 @@ This repository serves as the central hub for integrating, validating, and publi
 ## Source Repositories
 
 The authoritative implementations remain in their respective repos:
-- [su2-3nj-closedform](https://github.com/arcticoder/su2-3nj-closedform) — 27 tests ✓
-- [su2-3nj-uniform-closed-form](https://github.com/arcticoder/su2-3nj-uniform-closed-form) — 45 tests ✓
-- [su2-3nj-recurrences](https://github.com/arcticoder/su2-3nj-recurrences) — 18 tests ✓
-- [su2-3nj-generating-functional](https://github.com/arcticoder/su2-3nj-generating-functional) — 43 tests ✓
-- [su2-node-matrix-elements](https://github.com/arcticoder/su2-node-matrix-elements) — 15 tests ✓
+- [su2-3nj-closedform](https://github.com/DawsonInstitute/su2-3nj-closedform) — 27 tests ✓
+- [su2-3nj-uniform-closed-form](https://github.com/DawsonInstitute/su2-3nj-uniform-closed-form) — 45 tests ✓
+- [su2-3nj-recurrences](https://github.com/DawsonInstitute/su2-3nj-recurrences) — 18 tests ✓
+- [su2-3nj-generating-functional](https://github.com/DawsonInstitute/su2-3nj-generating-functional) — 43 tests ✓
+- [su2-node-matrix-elements](https://github.com/DawsonInstitute/su2-node-matrix-elements) — 15 tests ✓
 
 ## Hub Contents
 
