@@ -29,11 +29,20 @@
 \title{Unified Closed-Form Representations and Generating Functionals \\
        for SU(2) 3n-j Recoupling Coefficients}
 
-\author{
-  Dawson Institute\\
-  \textit{Dawson Institute}\\
-  \texttt{https://github.com/DawsonInstitute}
+% Optional author config: load `author_config.tex` if it exists (it may be
+% present locally for private author metadata). The file is gitignored and an
+% example template `author_config.example.tex` may be provided for contributors.
+\IfFileExists{author_config.tex}{%
+	\input{author_config.tex}%
+}{%
+	\providecommand{\authorname}{Dawson Institute}%
+	\providecommand{\authoraffiliation}{Dawson Institute}%
+	\providecommand{\authoremail}{info@dawsoninstitute.org}%
 }
+
+\author{\authorname\\
+  \textit{\authoraffiliation}\\
+  \texttt{https://github.com/DawsonInstitute}}
 
 \date{\today}
 
