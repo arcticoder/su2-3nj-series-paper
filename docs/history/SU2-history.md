@@ -756,3 +756,5 @@ Next decision needed for true 12j/15j spot checks: SymPy 1.14.0 does not provide
 
 **Deferred:** I3 (higher-valence stability sweep) awaits N7 implementation; 15j symbols deferred pending specific use case.
 <!-- ------ -->
+Good catch opportunity here: the validation tables currently (a) render SymPy strings like `sqrt(5)` literally, and (b) the summary double-counts higher‑n checks because those checks are *both* in the integration report and in the higher‑n JSONs. Next I’ll harden the table generator so it’s LaTeX-safe and the counts are consistent.
+<!-- ------ -->

@@ -5,7 +5,7 @@ Date: 2026-01-18
 ## At-a-glance status
 
 - **Repos with pytest**: 5/5  
-  Progress: `██████████` (100%) — **188 tests** passing total
+  Progress: `██████████` (100%) — **~157 unit tests** (per-repo) + **integration/reference checks** (see note below)
 - **Hub integration harness**: 21/21 checks passing (incl. 9j + 12j references)  
   Progress: `██████████` (100%)
 - **Node-matrix baseline parity (N0–N5)**: ✅ complete (15 tests + scripts + artifacts)
@@ -14,8 +14,11 @@ Date: 2026-01-18
   Progress: `██████████` (100%)
 - **Node-matrix physics parity (N6+)**: ✅ N6 complete (9 tests, derivative API for k≤4)
   Progress: `██████░░░░` (60%) — derivative-based API prototype operational
-- **Master paper**: ✅ PUBLICATION READY (23 pages, BibTeX-resolved)
-- **Main remaining work**: arXiv submission packaging + optional N7+ enhancements
+- **Master paper**: ✅ Zenodo-ready; 🔄 arXiv-endorsement polish in progress (currently ~18 pages with standard 1in margins)
+- **Main remaining work**: consistency/polish pass + arXiv submission packaging
+
+**Notes (important for arXiv polish)**
+- **Test-count inconsistency to resolve**: the paper currently says **161** tests, while historical docs reported **188**; the auto-generated validation summary table currently reports **191 total checks**. This needs to be reconciled and then made consistent across paper + docs.
 
 > **📋 Detailed completion history**: See [SU2-TODO-completed.md](SU2-TODO-completed.md) for full task archive
 
@@ -45,6 +48,91 @@ Priority order:
 2. **Cross-repo integration**: keep `scripts/run_integration_tests.py` authoritative; extend summary + higher-n spot checks
 3. **Higher-n validations**: 12j/15j sampling + UQ/stability sweeps (where implementations exist)
 4. **Packaging**: arXiv-ready LaTeX bundle + reproducible artifact regeneration
+
+---
+
+## Phase 3 (arXiv / Zenodo endorsement polish)
+
+The master paper is already strong enough for Zenodo (low-friction preprint), but arXiv endorsement-readiness benefits from **extra completeness, consistency, and reproducibility polish**.
+
+Target readiness:
+- **Zenodo**: ~80–90% (ship after quick consistency fixes)
+- **arXiv**: ~70% (ship after polish items below)
+
+### A1 — Resolve inconsistencies (counts, links, metadata)
+Actions:
+- Recompute and lock the test/check counts:
+  - per-repo pytest totals
+  - hub integration harness checks
+  - higher-n reference checks
+- Update all occurrences consistently:
+  - paper abstract + validation section
+  - this TODO
+  - any README “status” blocks
+- Ensure GitHub URLs in the paper point to `DawsonInstitute/*` (no legacy org/user links).
+
+Acceptance criteria:
+- Paper + TODO agree on the same numbers (or the paper uses a stable phrasing like “over 190 checks” and points to the generated report).
+
+### A2 — Make generated validation tables arXiv-proof
+Problem: auto-generated LaTeX can break builds (e.g., underscores) and some expressions render as raw SymPy strings (e.g., `sqrt(5)` instead of `\sqrt{5}`).
+
+Actions:
+- Harden `scripts/generate_validation_tables.py`:
+  - escape LaTeX special chars in text fields (descriptions, method names)
+  - render exact expressions via `sympy.latex(sympify(...))` when possible
+- Regenerate `papers/paper/validation-tables.tex` and ensure `latexmk` succeeds cleanly.
+
+Acceptance criteria:
+- No LaTeX build errors from generated tables; expressions render as proper math.
+
+### A3 — Add explicit half-integer example (visible in paper)
+Problem: half-integer support is claimed, but a reader should see at least one explicit half-integer value in a table or short inline example.
+
+Actions:
+- Add a dedicated half-integer 6j example to the validation tables and/or the validation section.
+- Ensure the example is cross-checked against SymPy (symbolic exact match).
+
+Acceptance criteria:
+- Paper includes an explicit half-integer numeric/exact example and a stated validation route.
+
+### A4 — Add algorithm/pseudocode blocks (reader-facing completeness)
+Actions:
+- Add short pseudocode/algorithm sketches for:
+  - matching-number computation route (e.g., Pfaffian for planar graphs; otherwise “external routine”)
+  - recurrence solve strategy (forward/backward + normalization)
+- Keep them compact and implementation-neutral.
+
+Acceptance criteria:
+- A motivated reader can reproduce the computational pipeline without reverse-engineering code.
+
+### A5 — Add explicit limitations + failure examples
+Actions:
+- Include 1–2 explicit failure-mode examples (e.g., near-singular determinant; recurrence instability threshold) and show what the diagnostic looks like.
+
+Acceptance criteria:
+- Paper states not just “unstable for large $j$” but also a concrete, checkable example.
+
+### A6 — Optional figures (nice-to-have for arXiv)
+Actions:
+- Add 1–2 small figures from existing sweeps:
+  - recurrence stability vs spin
+  - determinant condition number vs spin/topology
+
+Acceptance criteria:
+- Figures are generated by script; arXiv bundle includes the images.
+
+### A7 — arXiv + Zenodo packaging
+Actions:
+- Create an arXiv-ready bundle checklist:
+  - all `\input{}` files included
+  - `.bib` included and citations resolve
+  - figures included
+  - clean build from scratch
+- Optionally add a script to produce a submission `.tar.gz` from a clean tree.
+
+Acceptance criteria:
+- `latexmk` works from a clean build directory; a bundle can be uploaded without manual fixes.
 
 Scope note: for `su2-node-matrix-elements`, implement a *minimal, deterministic* computational entrypoint first (even if initially a placeholder), with clear hedging and tests that verify invariants, stability reporting, and cross-checks against independent numeric/symbolic backends.
 
