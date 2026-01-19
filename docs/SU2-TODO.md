@@ -422,7 +422,7 @@ Note: N7 (extending derivative API to k=5, k=6) is optional; can be completed as
 Status: ✅ COMPLETE
 
 Actions:
-- ✅ LICENSE consistency: All 6 repos now have identical Unlicense files (public domain)
+- ✅ LICENSE consistency: All 6 repos now use the MIT license (Copyright © 2026 Dawson Institute)
 - ✅ README uniformity: All 6 repos have README.md files
 - ✅ No hard-coded absolute paths in hub repo scripts/docs (scan confirmed clean)
 
