@@ -67,15 +67,56 @@ All representations are validated against SymPy's Wigner functions, with compreh
 \label{sec:background}
 
 \subsection{SU(2) Representation Theory}
-% Brief review of angular momentum coupling
-% Definition of 3j, 6j, 9j symbols
-% Triangle inequalities and selection rules
 
-\subsection{Existing Approaches}
-% Summation formulas (Racah)
-% Hypergeometric representations (Raynal)
-% Recurrence relations (Schulten-Gordon)
-% Generating functionals (Yutsis)
+The SU(2) Lie group describes rotations in three-dimensional space and quantum angular momentum. Irreducible representations are labeled by half-integer spins $j \in \{0, 1/2, 1, 3/2, \ldots\}$. Coupling two representations $j_1 \otimes j_2$ decomposes into a direct sum weighted by Clebsch-Gordan coefficients (3j symbols):
+$$
+\begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix}
+$$
+
+Higher-order recoupling (6j, 9j, 12j, $\ldots$ symbols) arises when coupling multiple angular momenta. The 6j symbol describes the transformation between two coupling schemes for three angular momenta:
+$$
+\left\{ \begin{matrix} j_1 & j_2 & j_3 \\ j_4 & j_5 & j_6 \end{matrix} \right\}
+$$
+
+Selection rules include triangle inequalities (e.g., $|j_1-j_2| \leq j_3 \leq j_1+j_2$) and parity constraints ($j_1+j_2+j_3 \in \mathbb{Z}$).
+
+\subsection{Historical Context and Existing Approaches}
+
+The theory of angular momentum recoupling has a rich seventy-year history. Wigner~\cite{wigner1931gruppentheorie} established the foundation with 3j symbols, extended by Racah~\cite{racah1942theory} to 6j coefficients. The comprehensive treatise by Varshalovich et al.~\cite{varshalovich1988quantum} systematized computational methods and remains the standard reference.
+
+Prior computational approaches include:
+
+\paragraph{Summation formulas} Direct evaluation of Racah sums. Accurate but computationally expensive for large quantum numbers. Schulten and Gordon~\cite{schulten1975exact} developed exact recursive evaluation.
+
+\paragraph{Hypergeometric representations} Recognition that 3nj symbols are special hypergeometric functions. Raynal~\cite{raynal1979complete} provided complete 6j representations. We extend this to universal product formulas.
+
+\paragraph{Recurrence relations} Three-term recurrences build values from boundaries. Luscombe and Luban~\cite{luscombe1998three} systematized 3j/6j recurrences. We derive closed forms for coefficients.
+
+\paragraph{Generating functionals} Yutsis et al.~\cite{yutsis1962mathematical} introduced graphical methods. We develop systematic generating functional calculus for arbitrary valence.
+
+\paragraph{Symmetry relations} Regge~\cite{regge1958symmetry,regge1959symmetry} discovered profound permutation symmetries. Our formulas naturally encode these through hypergeometric structure.
+
+Modern implementations (SymPy~\cite{meurer2017sympy}, specialized libraries~\cite{johansson2016fast,rasch2003efficient}) combine these with numerical optimization.
+
+\subsection{Applications}
+
+3nj symbols appear across quantum physics:
+\begin{itemize}
+\item \textbf{Atomic/molecular}: Multi-electron systems, hyperfine structure
+\item \textbf{Nuclear structure}: Shell models, coupled-cluster methods
+\item \textbf{Quantum gravity}: Spin networks~\cite{rovelli1995spin}, loop quantum gravity recoupling~\cite{depietri1996regge}
+\item \textbf{Quantum information}: Entanglement, tensor networks
+\end{itemize}
+
+\subsection{Novel Contributions}
+
+We advance beyond prior work through:
+\begin{enumerate}
+\item \textbf{Universal closed forms}: Hypergeometric product formulas unifying special cases
+\item \textbf{Generating functionals}: Systematic framework for arbitrary-valence nodes
+\item \textbf{Rigorous validation}: Cross-verification of three implementations + 50-digit reference data
+\item \textbf{Stability analysis}: Documented failure modes and UQ protocols
+\end{enumerate}
 
 \section{Closed-Form Hypergeometric Formulas}
 \label{sec:closed-form}
