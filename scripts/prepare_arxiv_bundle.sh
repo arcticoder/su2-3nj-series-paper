@@ -59,12 +59,11 @@ if [[ -f "$PAPER_DIR/author_config.tex" ]]; then
     cp "$PAPER_DIR/author_config.tex" "$TEMP_DIR/"
 fi
 
-# Figures (if any; currently none but add glob for future)
-if compgen -G "$PAPER_DIR/*.pdf" > /dev/null 2>&1; then
-    cp "$PAPER_DIR"/*.pdf "$TEMP_DIR/" 2>/dev/null || true
-fi
-if compgen -G "$PAPER_DIR/*.png" > /dev/null 2>&1; then
-    cp "$PAPER_DIR"/*.png "$TEMP_DIR/" 2>/dev/null || true
+# Figures (copy entire figures directory)
+if [[ -d "$PAPER_DIR/figures" ]]; then
+    mkdir -p "$TEMP_DIR/figures"
+    cp "$PAPER_DIR/figures"/*.pdf "$TEMP_DIR/figures/" 2>/dev/null || true
+    cp "$PAPER_DIR/figures"/*.png "$TEMP_DIR/figures/" 2>/dev/null || true
 fi
 
 # Step 5: Modify \input paths for flat directory structure
