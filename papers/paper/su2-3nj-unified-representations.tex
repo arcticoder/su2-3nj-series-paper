@@ -12,6 +12,15 @@
 \usepackage{hyperref}
 \usepackage{cleveref}
 
+% Load author config
+\IfFileExists{author_config.tex}{%
+	\input{author_config.tex}%
+}{%
+	\providecommand{\authorname}{Independent Researcher}%
+	\providecommand{\authoraffiliation}{Independent Research Institute}%
+	\providecommand{\authoremail}{contact@example.com}%
+}
+
 % Shared macros
 \input{../shared/shared-macros}
 
@@ -30,26 +39,18 @@
 \title{Unified Closed-Form Representations and Generating Functionals \\
        for SU(2) 3n-j Recoupling Coefficients}
 
-% Optional author config: load `author_config.tex` if it exists (it may be
-% present locally for private author metadata). The file is gitignored and an
-% example template `author_config.example.tex` may be provided for contributors.
-\IfFileExists{author_config.tex}{%
-	\input{author_config.tex}%
-}{%
-	\providecommand{\authorname}{Dawson Institute}%
-	\providecommand{\authoraffiliation}{Dawson Institute}%
-	\providecommand{\authoremail}{info@dawsoninstitute.org}%
-}
+       % Use symbol-style footnote for author contact and ensure consistent formatting
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\author{\authorname\footnotemark \\ \small \textit{\authoraffiliation}}
 
-\author{\authorname\\
-  \textit{\authoraffiliation}\\
-  \texttt{https://github.com/DawsonInstitute}}
-
-\date{\today}
+\date{January 18, 2026}
 
 \begin{document}
 
 \maketitle
+\footnotetext{\noindent\textasteriskcentered\ Electronic address: \textbf{\texttt{\authoremail}}}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+%\sloppy % Optional
 
 \begin{abstract}
 We present a unified framework for SU(2) 3n-j recoupling coefficients (Wigner symbols) encompassing five complementary closed-form representations. Our central result is a hypergeometric product formula valid for arbitrary trivalent coupling graphs, expressed via graph matching numbers and ${}_2F_1$ functions. This unifies all special cases (6j, 9j, 12j, etc.) under a single computational framework.
