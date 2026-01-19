@@ -354,6 +354,7 @@ Acceptance criteria:
 
 ### Medium-term (next month)
 6. **Task P2 (continued)**: Import content from individual repo .tex files
+  - ✅ Copied upstream LaTeX masters into `papers/sources/` for merge work
    - Extract relevant sections from 5 repository LaTeX masters
    - Harmonize notation across sections
    - Ensure proper cross-references
