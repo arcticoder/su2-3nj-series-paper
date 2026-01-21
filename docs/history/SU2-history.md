@@ -919,3 +919,21 @@ The paper is publication-ready at the arXiv endorsement standard. All critical c
 
 The paper is now **ready for arXiv submission** with all bibliography references verified against source documents and the bundle tested for clean compilation.
 <!-- ------ -->
+**Reference checks**
+- The Wigner citation usages in su2-3nj-unified-representations.tex and su2-3nj-unified-representations.tex are consistent with the downloaded source: the PDF title page/imprint shows *Gruppentheorie und ihre Anwendung auf die Quantenmechanik der Atomspektren* by **Eugen Wigner**, originally published by **Friedr. Vieweg & Sohn** (Braunschweig) in **1931**, with the modern eBook DOI **10.1007/978-3-663-02555-9**.
+- The Yutsis citation usage in su2-3nj-unified-representations.tex matches the downloaded book’s title page (A.P. Yutsis, I.B. Levinson, V.V. Vanagas; *Mathematical Apparatus of the Theory of Angular Momentum*; Israel Program for Scientific Translations; 1962) and is appropriate for the “graphical methods” statement.
+
+**Applied fix**
+- Updated the Wigner entry in su2-3nj-unified-representations.bbl to correct author name (“Eugen”), proper title capitalization, publisher location, and to include the DOI.
+
+**Zenodo keywords**
+- `SU(2)`, `angular momentum`, `angular momentum coupling`, `recoupling theory`, `Wigner symbols`, `3nj symbols`, `Wigner 3j`, `Wigner 6j`, `Wigner 9j`, `Clebsch–Gordan coefficients`, `Racah coefficients`, `Regge symmetries`, `hypergeometric functions`, `generating function`, `graphical methods`, `quantum mechanics`, `computational physics`, `symbolic computation`
+<!-- ------ -->
+Summary of changes:
+- su2-3nj-unified-representations.bbl: Wigner entry updated (publisher, DOI).
+- shared-bibliography.bib: Wigner converted to `@book` with full metadata (author: Eugen Wigner; publisher: Vieweg+Teubner Verlag; address: Wiesbaden; year: 1931; DOI and ISBN added).
+
+Next steps (optional):
+1. Run a quick BibTeX build to verify the bibliography renders as expected in the PDF (I can run the build/test if you want). ✅
+2. Add an explicit, expanded `@book` entry for Yutsis if you prefer the ADS-style bibtex from your earlier sample (current entry is adequate). Want me to standardize that too?
+<!-- ------ -->
