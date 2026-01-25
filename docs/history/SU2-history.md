@@ -937,3 +937,13 @@ Next steps (optional):
 1. Run a quick BibTeX build to verify the bibliography renders as expected in the PDF (I can run the build/test if you want). ✅
 2. Add an explicit, expanded `@book` entry for Yutsis if you prefer the ADS-style bibtex from your earlier sample (current entry is adequate). Want me to standardize that too?
 <!-- ------ -->
+## Update: Removed missing bibliography entry ✅
+
+**What I did**
+- Removed the non-existent entry `@article{biedenharn1953identity,...}` from shared-bibliography.bib.  
+  - File modified: shared-bibliography.bib (entry removed).
+
+**Verification**
+- Searched the repository for `biedenharn1953identity` — **no matches** remain.
+- Confirmed su2-3nj-unified-representations.tex does **not** cite that key.
+<!-- ------ -->
