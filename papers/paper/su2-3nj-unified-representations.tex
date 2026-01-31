@@ -2,67 +2,59 @@
 % Option 1: Comprehensive single paper
 % Option 2: Series template (uncomment sections as needed)
 
-\documentclass[12pt,letterpaper]{article}
+\documentclass[12pt,letterpaper]{amsart}
 
-% Standard packages
+% Layout & Typography
 \usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{graphicx}
+\usepackage{mathtools,amssymb}
+\usepackage{microtype}
 \usepackage{booktabs}
-\usepackage{hyperref}
-\usepackage{cleveref}
+\usepackage{graphicx}
 
-% Load author config
-\IfFileExists{author_config.tex}{%
-	\input{author_config.tex}%
-}{%
-	\providecommand{\authorname}{Independent Researcher}%
-	\providecommand{\authoraffiliation}{Independent Research Institute}%
-	\providecommand{\authoremail}{contact@example.com}%
-}
-
-% Shared macros
-\input{../shared/shared-macros}
-
-% Theorem environments
+% Theorem environments (amsart loads amsthm automatically)
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
-\newtheorem{example}[theorem]{Example}
 
-% Title and authors
-\title{Unified Closed-Form Representations and Generating Functionals \\
-       for SU(2) 3n-j Recoupling Coefficients}
+% Hyperref (load last)
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+\usepackage{cleveref}
+
+% Shared macros
+% \input{../shared/shared-macros}
+
+\title[SU(2) 3n-j Recoupling Coefficients]{Unified Closed-Form Representations and Generating Functionals for SU(2) 3n-j Recoupling Coefficients}
 
        % Use symbol-style footnote for author contact and ensure consistent formatting
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \author{\authorname\footnotemark \\ \small \textit{\authoraffiliation}}
 
 \date{January 18, 2026}
+\author{Ryan Sherrington}
+\address{Dawson Institute for Advanced Physics}
+\email{rsherrington@dawsoninstitute.org}
+
+\subjclass[2020]{Primary 33C80; Secondary 81R05}
+\keywords{SU(2), recoupling coefficients, 3n-j symbols, generating functionals}
 
 \begin{document}
 
-\maketitle
-\footnotetext{\noindent\textasteriskcentered\ Electronic address: \textbf{\texttt{\authoremail}}}
-\renewcommand{\thefootnote}{\arabic{footnote}}
-%\sloppy % Optional
-
 \begin{abstract}
-We present a unified framework for SU(2) 3n-j recoupling coefficients (Wigner symbols) encompassing five complementary closed-form representations. Our central result is a hypergeometric product formula valid for arbitrary trivalent coupling graphs, expressed via graph matching numbers and ${}_2F_1$ functions. This unifies all special cases (6j, 9j, 12j, etc.) under a single computational framework.
-
-The framework comprises: (1) hypergeometric product formulas achieving polynomial complexity $O(|E| \cdot j^2)$ versus exponential summation methods; (2) uniform single-sum ${}_5F_4$ representations for 12j symbols via algebraic reindexing; (3) finite three-term recurrence relations from edge-removal determinants with documented stability regimes; (4) universal Schwinger-boson generating functionals yielding determinant formulas $G(\{x_e\}) = 1/\sqrt{\det(I-K)}$; and (5) arbitrary-valence node matrix elements via functional derivatives.
-
-All representations are rigorously cross-validated through 178 automated tests (21 integration checks across five independent implementations, plus 157 per-repository unit tests), with exact agreement against SymPy's symbolic computation. High-precision (50 decimal places) reference datasets for 6j, 9j, and 12j symbols establish deterministic validation baselines. We provide comprehensive uncertainty quantification protocols documenting numerical stability regimes, precision requirements, and failure modes for practical computation. Complete source code, validation scripts, and reference datasets are available in open-source repositories.
-
-\noindent \textbf{Keywords:} Wigner symbols, 3nj coefficients, angular momentum recoupling, hypergeometric functions, generating functionals, spin networks, numerical stability, uncertainty quantification
+We present a unified framework for computing SU(2) 3nj recoupling coefficients through five complementary mathematical representations: hypergeometric product formulas, uniform single-sum expressions, finite recurrence relations, universal generating functionals, and arbitrary-valence matrix elements. This work establishes the first truly closed-form expressions for arbitrary trivalent graphs, validated through rigorous cross-verification against symbolic computation and high-precision reference datasets. Applications span quantum physics from atomic structure to loop quantum gravity.
 \end{abstract}
 
-\tableofcontents
+\maketitle
+
+\bigskip
+
 
 \section{Introduction}
 \label{sec:intro}
@@ -654,7 +646,7 @@ All source code, validation scripts, and reference datasets are released under o
 \end{itemize}
 
 \bibliographystyle{plain}
-\bibliography{../shared/shared-bibliography}
+\bibliography{su2-3nj-unified-representations}
 
 \appendix
 

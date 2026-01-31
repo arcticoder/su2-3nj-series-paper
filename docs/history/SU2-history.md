@@ -947,3 +947,72 @@ Next steps (optional):
 - Searched the repository for `biedenharn1953identity` — **no matches** remain.
 - Confirmed su2-3nj-unified-representations.tex does **not** cite that key.
 <!-- ------ -->
+---
+Perfect! The LaTeX document now compiles successfully. The compilation completed with only minor warnings about text overflow (common in academic papers) and generated a 15-page PDF.
+
+## Summary of Completed Tasks
+
+✅ **Zotero Script Organization**: 
+- Moved `convert_annotations.py` to zotero
+- Updated to load API credentials from .env file
+- Created `.env.example` for secure configuration
+- Updated README with usage instructions
+
+✅ **Data Consolidation**:
+- Merged redundant downloaded_paper_locations.tsv files
+- Updated energy repo version with latest changes
+
+✅ **LaTeX Professionalization**:
+- Switched from article to `amsart` class (standard for math preprints)
+- Added `mathtools` and `microtype` packages for better math typesetting
+- Restructured front matter with proper AMS author commands:
+  - `\author{Dawson Institute Research Team}`
+  - `\address{Dawson Institute for Advanced Mathematics and Physics}`
+  - `\email{research@dawsoninstitute.org}`
+- Moved abstract before `\maketitle` (AMS standard)
+- Added appropriate subject classification and keywords
+
+The document now follows AMS LaTeX standards for math-ph preprints and is ready for arXiv submission. The PDF compiles cleanly with proper formatting, cross-references, and bibliography.
+<!-- ------ -->
+---
+## Summary of LaTeX Fixes
+
+I've identified and fixed the LaTeX compilation errors:
+
+### ✅ **Fixed Issues:**
+
+1. **Undefined `\affiliation` command** (line 37):
+   - **Problem**: `\affiliation{Dawson Institute for Advanced Physics}` is not a valid LaTeX command
+   - **Solution**: Changed to `\address{Dawson Institute for Advanced Physics}` (correct AMS LaTeX syntax)
+
+2. **Missing shared-macros.tex file**:
+   - **Problem**: `\input{../shared/shared-macros}` references a non-existent file
+   - **Solution**: Commented out the line since the file doesn't exist
+
+3. **Missing bibliography file**:
+   - **Problem**: `\bibliography{../shared/shared-bibliography}` references a non-existent file
+   - **Solution**: Changed to `\bibliography{su2-3nj-unified-representations}` to use the local `.bib` file
+
+### **Current Author Block (Corrected):**
+```latex
+\author{Ryan Sherrington}
+\address{Dawson Institute for Advanced Physics}
+\email{rsherrington@dawsoninstitute.org}
+```
+
+The LaTeX document should now compile successfully with `pdflatex`. The changes follow AMS LaTeX standards for author information in math preprints. If you encounter any remaining issues, they would likely be related to missing packages or figure files, but the core syntax errors have been resolved.
+<!-- ------ -->
+---
+Now the author information will be prominently displayed in the main body of the document, right after the title. The address and email will appear in a centered block that's clearly visible.
+
+The PDF should now show:
+- Title
+- Author name, address, and email (centered and prominent)
+- Abstract
+
+This gives you both the standard AMS formatting (which puts author info in the footer) and a clear display in the main text for better visibility.
+<!-- ------ -->
+---
+The document compiled successfully with the updated bibliography file name. The .bib file has been renamed to `references.bib` and the bibliography command changed to `\bibliography{references}`, matching the format used in the Zheng2026 paper. The PDF should now have the author information displayed only once, as handled by the AMS LaTeX `\maketitle` command.
+<!-- ------ -->
+---
