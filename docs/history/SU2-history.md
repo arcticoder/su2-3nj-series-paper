@@ -1242,4 +1242,29 @@ Wigner~\cite{wigner2013} established the mathematical framework for angular mome
 - Revised manuscript to distinguish coupling coefficients from 3j notation.
 - Added citation `wigner1993` (reprint of 1940 work) to bibliographic database.
 - Notes added to `su2-3nj-unified-representations-bib-annotations.md`.
+<!-- ------ -->
+---
+The script `process_papers.py` has been created in related. It parses the BibTeX file to extract citation keys and titles, reads the TSV file for the relevant paper entries, matches titles to keys (case-insensitively), skips `wigner2013` and `racah1942`, verifies PDF existence, and runs the `mineru` command for each remaining paper.
 
+To execute it, navigate to the directory and run:
+
+```bash
+python process_papers.py
+```
+
+Ensure `mineru` is installed and CUDA is available, as the script assumes these are set up. The script will print the commands it's running and any issues (e.g., missing PDFs or unmatched titles).
+<!-- ------ -->
+---
+The script has been updated to check if a directory named after the citation key already exists in the working directory (`~/Code/asciimath/su2-3nj-series-paper/papers/related`). If it does, it skips processing that paper; otherwise, it proceeds with the `mineru` command. This removes the hardcoded skip list and makes the script idempotent based on existing output directories.
+<!-- ------ -->
+---
+The script has been successfully modified and is now running in the background to process the remaining PDFs. It now properly normalizes titles for accurate matching, skips papers that have already been converted (based on existing output directories), and handles the mineru command execution.
+
+Key fixes applied:
+- Added Unicode normalization to handle special characters (e.g., smart quotes, en dashes) in titles from both the BibTeX file and TSV file.
+- Changed the skip logic to check for existing output directories instead of hardcoded keys.
+- Ensured the script runs from the correct directory and handles PDF path resolution.
+
+The script is currently executing mineru for the unconverted papers. You can monitor progress by checking the terminal output or the generated directories in `~/Code/asciimath/su2-3nj-series-paper/papers/related`. If any papers fail to process, you can re-run the script as it will skip already completed ones.
+<!-- ------ -->
+---
