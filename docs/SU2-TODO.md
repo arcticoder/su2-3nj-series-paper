@@ -22,6 +22,7 @@ Date: 2026-01-18
   - **Completed**: 2026-01-31
   - **⚠️ CRITICAL FINDING**: Manuscript claims "Wigner established the foundation with 3j symbols" but Wigner (1931) introduced **Clebsch-Gordan coefficients** (coupling coefficients $s_{L\mu\nu}$), NOT the "3j symbol" notation
   - **Action Required**: Revise manuscript line 91 to correctly attribute "coupling coefficients" or "Clebsch-Gordan coefficients"
+  - **Resolution**: Manuscript updated to distinguish Wigner (1931) coupling coefficients from later 3j symbol notation. Added Wigner (1993/1940) citation.
   - Full evaluation in: `~/Code/asciimath/su2-3nj-series-paper/papers/su2-3nj-unified-representations-bib-annotations.md`
 
 ### racah1942

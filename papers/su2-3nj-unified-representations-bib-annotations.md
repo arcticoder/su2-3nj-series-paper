@@ -82,24 +82,37 @@ The manuscript's claim needs revision to accurately reflect what Wigner (1931) a
 
 - [x] Convert PDF completed
 - [x] Verify historical claim - **FOUND INACCURATE**
-- [ ] **CRITICAL**: Revise manuscript line 91 to correctly attribute "coupling coefficients" or "Clebsch-Gordan coefficients" rather than "3j symbols"
-- [ ] Research when "3j symbol" notation was actually introduced (likely a later Wigner paper or another author)
-- [ ] Consider citing both the original coupling coefficient work AND the work that introduced 3j notation
-- [ ] Update acknowledgments (line 641) if needed for accuracy
+- [x] **CRITICAL**: Revise manuscript line 91 to correctly attribute "coupling coefficients" or "Clebsch-Gordan coefficients" rather than "3j symbols"
+- [x] Research when "3j symbol" notation was actually introduced (likely a later Wigner paper or another author)
+- [x] Consider citing both the original coupling coefficient work AND the work that introduced 3j notation
+- [x] Update acknowledgments (line 641) if needed for accuracy
 
 **Recommended Manuscript Revision**:
 
 **Current (Line 91)**: "Wigner~\cite{wigner2013} established the foundation with 3j symbols..."
 
-**Suggested**: "Wigner~\cite{wigner2013} established the foundation with coupling coefficients for angular momentum recoupling, later formalized in the 3j symbol notation..."
-
-OR: "Wigner~\cite{wigner2013} established the mathematical framework for angular momentum coupling through what are now known as Clebsch-Gordan coefficients, extended by..."
+**Suggested**: "Wigner~\cite{wigner2013} established the foundation with coupling coefficients for angular momentum recoupling (now known as Clebsch-Gordan coefficients), which were later formalized~\cite{wigner1993} in the 3j symbol notation..."
 
 **Notes**:
 - Original 1931 work in German, 2013 is unchanged reprint
 - 339-page document with extensive group theory and quantum mechanics
 - Mathematically rigorous derivations of coupling theory
 - This is THE foundational reference, but attribution must be historically accurate
+
+---
+
+### wigner1993
+
+**BibTeX Key**: `wigner1993`  
+**Source**: Wigner, E. P. (1993). "On the Matrices Which Reduce the Kronecker Products of Representations of S. R. Groups". In *The Collected Works of Eugene Paul Wigner*.  
+**Original**: Wigner, E. P. (1940). (Unpublished/Princeton Notes).  
+**PDF Location**: `papers/related/wigner1993.pdf`  
+**Cited In Manuscript**: Line 91, 641 (Added)
+
+**Status**: ✅ Added to support historical accuracy
+
+**Citation Context**:
+- Added to clarify that 3j notation was formalized in this 1940 work, not the 1931 book.
 
 ---
 

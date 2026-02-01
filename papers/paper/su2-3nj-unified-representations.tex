@@ -88,7 +88,7 @@ Selection rules include triangle inequalities (e.g., $|j_1-j_2| \leq j_3 \leq j_
 
 \subsection{Historical Context and Existing Approaches}
 
-The theory of angular momentum recoupling has a rich seventy-year history. Wigner~\cite{wigner2013} established the foundation with 3j symbols, extended by Racah~\cite{racah1942} to 6j coefficients. The comprehensive treatise by Varshalovich et al.~\cite{varshalovich1988} systematized computational methods and remains the standard reference.
+The theory of angular momentum recoupling has a rich seventy-year history. Wigner~\cite{wigner2013} established the foundation with coupling coefficients for angular momentum recoupling (now known as Clebsch-Gordan coefficients), which were later formalized~\cite{wigner1993} in the 3j symbol notation. This framework was extended by Racah~\cite{racah1942} to 6j coefficients. The comprehensive treatise by Varshalovich et al.~\cite{varshalovich1988} systematized computational methods and remains the standard reference.
 
 Prior computational approaches include:
 
@@ -638,7 +638,7 @@ The unified framework presented here provides both theoretical insight—connect
 
 \section*{Acknowledgments}
 
-This work builds on the foundational contributions of Wigner~\cite{wigner2013}, Racah~\cite{racah1942}, and Regge~\cite{regge1958,regge1959} to the theory of angular momentum recoupling. We acknowledge the SymPy development team~\cite{meurer2017} for providing robust symbolic computation infrastructure enabling independent validation.
+This work builds on the foundational contributions of Wigner~\cite{wigner2013,wigner1993}, Racah~\cite{racah1942}, and Regge~\cite{regge1958,regge1959} to the theory of angular momentum recoupling. We acknowledge the SymPy development team~\cite{meurer2017} for providing robust symbolic computation infrastructure enabling independent validation.
 
 Computational validation employed the Python scientific computing ecosystem, including NumPy, mpmath (for arbitrary-precision arithmetic), and pytest (for reproducible testing). High-precision reference datasets were generated using mpmath's 50-decimal-place arithmetic.
 

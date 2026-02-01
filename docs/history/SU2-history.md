@@ -1232,5 +1232,14 @@ Wigner~\cite{wigner2013} established the mathematical framework for angular mome
 - **Critical Findings**: 1 citation inaccuracy requiring manuscript revision
 - **Time Investment**: ~1.5 hours (conversion wait + evaluation)
 
-**Status**: Awaiting user decision on manuscript revision approach before proceeding to racah1942 evaluation.
+**Status**: Wigner 1931 evaluation completed and manuscript revised (2026-01-31). Proceeding to racah1942.
+
+## 2026-01-31 Citation Revision (Wigner 1931)
+
+**Issue**: Manuscript line 91 attributed "3j symbols" to Wigner (1931).
+**Verification**: Full text analysis of Wigner (1931) confirmed usage of $s_{L\mu\nu}$ (Clebsch-Gordan), not 3j symbols (Regge/Wigner ~1950s notation).
+**Action**: 
+- Revised manuscript to distinguish coupling coefficients from 3j notation.
+- Added citation `wigner1993` (reprint of 1940 work) to bibliographic database.
+- Notes added to `su2-3nj-unified-representations-bib-annotations.md`.
 
