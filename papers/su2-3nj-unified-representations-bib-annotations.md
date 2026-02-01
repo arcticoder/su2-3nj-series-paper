@@ -26,26 +26,80 @@ Each bibliography entry is evaluated according to:
 **Source**: Wigner, E. (2013). *Gruppentheorie und ihre Anwendung auf die Quantenmechanik der Atomspektren*. Vieweg+Teubner Verlag.  
 **Original**: Wigner, E. (1931). *Group Theory and Its Application to the Quantum Mechanics of Atomic Spectra*  
 **PDF Location**: `papers/related/Wigner_1931.pdf`  
-**Markdown Conversion**: `papers/related/wigner2013/` (In Progress)  
+**Markdown Conversion**: `papers/related/wigner2013/Wigner_1931/hybrid_auto/Wigner_1931.md` ✓ COMPLETE (10,005 lines)  
 **Cited In Manuscript**: Line 91, 641
 
-**Status**: 🔄 Conversion in progress (MinerU running)
+**Status**: 🔍 AWAITING REVIEW - **CRITICAL ISSUE IDENTIFIED**
 
 **Citation Context**:
 - Line 91: "Wigner~\cite{wigner2013} established the foundation with 3j symbols..."
+- Line 641: "This work builds on the foundational contributions of Wigner~\cite{wigner2013}..."
 
-**Evaluation**: (Pending conversion completion)
+**Evaluation**: ⚠️ **CITATION INACCURACY DETECTED**
 
-**Actions Needed**: 
-- [ ] Complete markdown conversion
-- [ ] Verify historical claim about 3j symbol foundations
-- [ ] Check if additional Wigner contributions should be mentioned
-- [ ] Confirm this is the appropriate edition/translation to cite
+#### Citation Accuracy: ❌ PARTIALLY INCORRECT
+
+The manuscript states: "Wigner established the foundation with 3j symbols"
+
+**FINDINGS FROM SOURCE MATERIAL**:
+
+1. **What Wigner (1931) Actually Introduced**: 
+   - Chapter XVI ("Die Darstellungen des direkten Produktes") discusses coupling of angular momentum representations
+   - Introduces coupling coefficients denoted as $s_{L\mu\nu}$ or $S_{Lm;\mu\nu}$ (lines 5900-6050 of converted markdown)
+   - These are **Clebsch-Gordan coefficients**, not "3j symbols"
+   - Equation (16b), (22), (23) present the mathematical framework for these coefficients
+   - The coefficients couple two angular momenta $(l, \mu)$ and $(\bar{l}, \nu)$ to form total angular momentum $(L, m = \mu + \nu)$
+
+2. **Absence of "3j Symbol" Terminology**:
+   - Searched entire converted document (10,005 lines): **NO MENTION** of "3j" terminology
+   - Searched for "Clebsch-Gordan": 0 results (German text uses different terminology)
+   - The term "3j symbol" in the modern notation $\begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix}$ does NOT appear
+
+3. **Historical Context**:
+   - Wigner (1931) established the mathematical framework for angular momentum coupling
+   - The specific "3j symbol" notation was introduced **later** (likely 1940s or later, possibly by Wigner himself or others)
+   - 3j symbols are mathematically related to Clebsch-Gordan coefficients: $\begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix} = \frac{(-1)^{j_1-j_2-m_3}}{\sqrt{2j_3+1}} \langle j_1 m_1 j_2 m_2 | j_3 (-m_3) \rangle$
+
+#### Citation Completeness: ⚠️ NEEDS CLARIFICATION
+
+**What manuscript should state**: Wigner established the foundation with **coupling coefficients** (Clebsch-Gordan coefficients), which are the precursors to the modern 3j symbol notation.
+
+**Additional relevant content in Wigner (1931)**:
+- Vector addition model ("Vektoradditionsmodell") for angular momentum coupling (Fig. 8, Section 6-7)
+- Selection rules: $L = |l - \bar{l}|, |l - \bar{l}| + 1, \ldots, l + \bar{l}$ (Equation 14)
+- Orthogonality relations for coupling coefficients (Equation 22)
+- Application to atomic spectra (Chapter XVII)
+
+#### Citation Necessity: ✓ ESSENTIAL (but needs correction)
+
+The citation is essential as foundational work, but the description is historically inaccurate.
+
+#### Manuscript Alignment: ❌ MISALIGNED
+
+The manuscript's claim needs revision to accurately reflect what Wigner (1931) actually introduced.
+
+#### Recommended Actions:
+
+- [x] Convert PDF completed
+- [x] Verify historical claim - **FOUND INACCURATE**
+- [ ] **CRITICAL**: Revise manuscript line 91 to correctly attribute "coupling coefficients" or "Clebsch-Gordan coefficients" rather than "3j symbols"
+- [ ] Research when "3j symbol" notation was actually introduced (likely a later Wigner paper or another author)
+- [ ] Consider citing both the original coupling coefficient work AND the work that introduced 3j notation
+- [ ] Update acknowledgments (line 641) if needed for accuracy
+
+**Recommended Manuscript Revision**:
+
+**Current (Line 91)**: "Wigner~\cite{wigner2013} established the foundation with 3j symbols..."
+
+**Suggested**: "Wigner~\cite{wigner2013} established the foundation with coupling coefficients for angular momentum recoupling, later formalized in the 3j symbol notation..."
+
+OR: "Wigner~\cite{wigner2013} established the mathematical framework for angular momentum coupling through what are now known as Clebsch-Gordan coefficients, extended by..."
 
 **Notes**:
-- This is cited as the 2013 reprint/translation edition
-- Original 1931 German edition
-- Foundational work in quantum angular momentum theory
+- Original 1931 work in German, 2013 is unchanged reprint
+- 339-page document with extensive group theory and quantum mechanics
+- Mathematically rigorous derivations of coupling theory
+- This is THE foundational reference, but attribution must be historically accurate
 
 ---
 

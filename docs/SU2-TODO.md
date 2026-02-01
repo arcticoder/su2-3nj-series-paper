@@ -13,15 +13,16 @@ Date: 2026-01-18
 ## PDF Conversions and Citation Evaluations
 
 ### wigner2013
-- [ ] Convert `Wigner_1931.pdf` to markdown using MinerU
+- [x] ✅ Convert `Wigner_1931.pdf` to markdown using MinerU
   - Source: `~/Code/asciimath/energy/docs/downloaded_paper_locations.tsv:31`
-  - Output: `~/Code/asciimath/su2-3nj-series-paper/papers/related/wigner2013/wigner2013.md`
-- [ ] Evaluate citations in `su2-3nj-unified-representations.tex:91,641`
+  - Output: `~/Code/asciimath/su2-3nj-series-paper/papers/related/wigner2013/Wigner_1931/hybrid_auto/Wigner_1931.md` (10,005 lines)
+  - **Completed**: 2026-01-31
+- [x] ✅ Evaluate citations in `su2-3nj-unified-representations.tex:91,641`
   - Reference: "Gruppentheorie und ihre Anwendung auf die Quantenmechanik der Atomspektren"
-  - Create/update annotation file with findings
-  - Determine if citation changes needed
-  - Check for additional citations needed
-  - Verify manuscript content aligns with source
+  - **Completed**: 2026-01-31
+  - **⚠️ CRITICAL FINDING**: Manuscript claims "Wigner established the foundation with 3j symbols" but Wigner (1931) introduced **Clebsch-Gordan coefficients** (coupling coefficients $s_{L\mu\nu}$), NOT the "3j symbol" notation
+  - **Action Required**: Revise manuscript line 91 to correctly attribute "coupling coefficients" or "Clebsch-Gordan coefficients"
+  - Full evaluation in: `~/Code/asciimath/su2-3nj-series-paper/papers/su2-3nj-unified-representations-bib-annotations.md`
 
 ### racah1942
 - [ ] Convert `Racah_1942.pdf` to markdown using MinerU

@@ -1126,3 +1126,111 @@ mineru -p Wigner_1931.pdf -o wigner2013 -m auto -d cuda -l en
 
 <!-- ------ -->
 ---
+<!-- ------ -->
+---
+
+## Session 2026-01-31: Wigner Citation Evaluation - Critical Issue Identified
+
+**Date**: 2026-01-31  
+**Objective**: Fix bibliography file redundancy issue and complete wigner2013 citation evaluation
+
+### Task 1: Fix Bibliography File Reference
+
+**Problem**: Created redundant `references.bib` file instead of using `git mv`, losing file history and creating confusion.
+
+**Solution**:
+- Modified `su2-3nj-unified-representations.tex` to reference original `su2-3nj-unified-representations.bib`
+- Removed redundant `references.bib` using `git rm` (preserves deletion in history)
+- Committed: SHA 525001c
+
+**Files Modified**:
+- `papers/paper/su2-3nj-unified-representations.tex` - Changed `\bibliography{references}` to `\bibliography{su2-3nj-unified-representations}`
+- Removed: `papers/paper/references.bib`
+
+### Task 2: Wigner2013 Citation Evaluation - CRITICAL FINDINGS
+
+**MinerU Conversion**: 
+- Completed conversion of `Wigner_1931.pdf` (339 pages) to markdown
+- Output: `papers/related/wigner2013/Wigner_1931/hybrid_auto/Wigner_1931.md` (10,005 lines)
+- Conversion time: ~30 minutes for 339 pages
+
+**Citation Analysis**:
+
+**Manuscript Claims** (Line 91):
+> "Wigner~\cite{wigner2013} established the foundation with 3j symbols..."
+
+**⚠️ CITATION INACCURACY DETECTED**:
+
+1. **What Wigner (1931) Actually Introduced**:
+   - Chapter XVI discusses coupling of angular momentum representations
+   - Introduces coupling coefficients denoted as $s_{L\mu\nu}$ or $S_{Lm;\mu\nu}$
+   - These are **Clebsch-Gordan coefficients**, NOT "3j symbols" in modern notation
+   - Equations (16b), (22), (23) present the mathematical framework
+
+2. **Evidence**:
+   - Searched entire converted document (10,005 lines): **NO MENTION** of "3j" terminology
+   - The term "3j symbol" in modern notation $\begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix}$ does NOT appear
+   - Wigner's coefficients couple $(l, \mu)$ and $(\bar{l}, \nu)$ to $(L, m = \mu + \nu)$
+
+3. **Historical Context**:
+   - Wigner (1931) established mathematical framework for angular momentum coupling
+   - The specific "3j symbol" notation was introduced **later** (likely 1940s+)
+   - 3j symbols are related to Clebsch-Gordan coefficients by phase convention and normalization
+
+4. **Manuscript Content Found**:
+   - Vector addition model ("Vektoradditionsmodell") for coupling (Fig. 8)
+   - Selection rules: $L = |l - \bar{l}|, |l - \bar{l}| + 1, \ldots, l + \bar{l}$
+   - Orthogonality relations for coupling coefficients
+   - Applications to atomic spectra (Chapter XVII)
+
+**Recommended Manuscript Revision**:
+
+**Current (Line 91)**: 
+```latex
+Wigner~\cite{wigner2013} established the foundation with 3j symbols...
+```
+
+**Suggested**:
+```latex
+Wigner~\cite{wigner2013} established the foundation with coupling coefficients for angular momentum recoupling, later formalized in the 3j symbol notation...
+```
+
+OR:
+```latex
+Wigner~\cite{wigner2013} established the mathematical framework for angular momentum coupling through what are now known as Clebsch-Gordan coefficients, extended by...
+```
+
+### Files Updated
+
+1. **Annotation Framework**:
+   - `papers/su2-3nj-unified-representations-bib-annotations.md` - Added comprehensive evaluation of wigner2013 citation
+   - Documented citation inaccuracy, source findings, historical context, recommended revisions
+
+2. **Tracking Documents**:
+   - `docs/SU2-TODO.md` - Marked wigner2013 conversion and evaluation as complete with critical finding note
+   - `~/Code/asciimath/energy/docs/downloaded_paper_locations.tsv` - Updated converted path and status
+
+### Next Steps
+
+1. **CRITICAL**: Revise manuscript line 91 to correctly attribute coupling coefficients/Clebsch-Gordan coefficients
+2. **Research**: Determine when "3j symbol" notation was actually introduced (may need additional citation)
+3. **Continue**: Proceed with racah1942 conversion and evaluation
+4. **Decision Point**: User must approve manuscript revision approach before continuing
+
+### Methodology Notes
+
+- First complete citation evaluation demonstrates:
+  - MinerU successfully converts large German technical documents
+  - 10,000-line markdown searchable for terminology validation
+  - Historical claims require careful source material verification
+  - Citation accuracy is critical for scientific integrity
+
+### Statistics
+
+- **PDF Converted**: Wigner_1931.pdf (339 pages → 10,005 lines markdown)
+- **Search Operations**: Multiple grep searches across full text
+- **Critical Findings**: 1 citation inaccuracy requiring manuscript revision
+- **Time Investment**: ~1.5 hours (conversion wait + evaluation)
+
+**Status**: Awaiting user decision on manuscript revision approach before proceeding to racah1942 evaluation.
+
