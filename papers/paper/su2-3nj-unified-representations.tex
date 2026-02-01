@@ -1,52 +1,41 @@
 % Master Paper Bundle — SU(2) 3nj Series
-% Option 1: Comprehensive single paper
-% Option 2: Series template (uncomment sections as needed)
+% Target: Journal of Mathematical Physics (JMP) - AIP
+% arXiv: math-ph (primary), quant-ph, gr-qc (cross-list)
 
-\documentclass[12pt,letterpaper]{amsart}
+\documentclass[aip,jmp,amsmath,amssymb,reprint]{revtex4-2}
 
-% Layout & Typography
-\usepackage[margin=1in]{geometry}
-\usepackage{mathtools,amssymb}
+% Additional packages
+\usepackage{mathtools}
 \usepackage{microtype}
 \usepackage{booktabs}
 \usepackage{graphicx}
 
-% Theorem environments (amsart loads amsthm automatically)
+% Theorem environments (RevTeX compatible)
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
-
-\theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
-
-\theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
-% Hyperref (load last)
+% Hyperref (RevTeX handles this internally, but can be customized)
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
-\usepackage{cleveref}
 
 % Shared macros
+% Shared macros (if needed)
 % \input{../shared/shared-macros}
-
-\providecommand{\authorname}{Ryan Sherrington}%
-\providecommand{\authoraffiliation}{Dawson Institute for Advanced Physics}%
-\providecommand{\authoremail}{rsherrington@dawsoninstitute.org}%
 
 \title[SU(2) 3n-j Recoupling Coefficients]{Unified Closed-Form Representations and Generating Functionals for SU(2) 3n-j Recoupling Coefficients}
 
-       % Use symbol-style footnote for author contact and ensure consistent formatting
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \author{Ryan Sherrington}
-
-\date{January 18, 2026}
-\address{Dawson Institute for Advanced Physics}
 \email{rsherrington@dawsoninstitute.org}
+\affiliation{Dawson Institute for Advanced Physics}
 
-\subjclass[2020]{Primary 33C80; Secondary 81R05}
-\keywords{SU(2), recoupling coefficients, 3n-j symbols, generating functionals}
+\date{\today}
+
+\pacs{02.20.Qs, 03.65.Fd, 04.60.Pp}
+\keywords{SU(2), recoupling coefficients, 3n-j symbols, generating functionals, hypergeometric functions}
 
 \begin{document}
 
@@ -55,10 +44,6 @@ We present a unified framework for computing SU(2) 3nj recoupling coefficients t
 \end{abstract}
 
 \maketitle
-
-\footnotetext{\noindent\textasteriskcentered\ Electronic address: \textbf{\texttt{\authoremail}}}
-
-\bigskip
 
 
 \section{Introduction}
@@ -650,7 +635,7 @@ All source code, validation scripts, and reference datasets are released under o
 \item Individual implementations: \texttt{https://github.com/DawsonInstitute/su2-3nj-*}
 \end{itemize}
 
-\bibliographystyle{plain}
+\bibliographystyle{aipnum4-2}
 \bibliography{su2-3nj-unified-representations}
 
 \appendix

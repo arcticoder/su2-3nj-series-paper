@@ -8,7 +8,59 @@ Date: 2026-01-18
 # SU(2) 3n-j Series — Citations Assessment TODO
 
 **Date Added**: 2026-01-31  
+**Last Updated**: 2026-01-31 (Submission Preparation Phase)  
 **Objective**: Systematically convert all referenced PDFs to markdown using MinerU, evaluate citations in the manuscript, and create comprehensive citation annotations to ensure accuracy and completeness.
+
+## Phase 3: Journal Submission Preparation (Q1 2026)
+
+**Target Journal**: Journal of Mathematical Physics (JMP)  
+**Target arXiv Categories**: math-ph (primary), quant-ph, gr-qc (cross-list)  
+**Timeline**: Submit by end of Q1 2026 (March 31, 2026)
+
+### Submission Readiness Tasks
+
+- [x] **Convert to RevTeX 4.2**: Switch from amsart to JMP-compliant document class
+  - [x] Update documentclass to `revtex4-2` with `[aip,jmp,amsmath,amssymb,reprint]` options
+  - [x] Adjust author/affiliation format for RevTeX
+  - [x] Update bibliography style to `aipnum4-2`
+  - [x] Remove custom geometry/margin settings (RevTeX handles this)
+  - [x] Add PACS codes (02.20.Qs, 03.65.Fd, 04.60.Pp)
+  - **Status**: ✅ Complete (2026-01-31)
+
+- [ ] **Bibliography completeness check**:
+  - [ ] Verify all DOIs are present (priority: johansson2016, meurer2017)
+  - [ ] Remove elliott1953 if not cited in manuscript text
+  - [ ] Ensure labarthe1975 and bitencourt2014 are properly cited in relevant sections
+  - [ ] Add cross-references in Section 6 (Generating Functionals) for labarthe1975
+  - [ ] Add cross-references in Section 8 (Stability Analysis) for bitencourt2014
+
+- [ ] **Prepare arXiv submission bundle**:
+  - [ ] Validate with `arxiv-collector` tool
+  - [ ] Include all repository code as ancillary files
+  - [ ] Ensure all figures compile correctly
+  - [ ] Test build with Makefile for arXiv compatibility
+
+- [ ] **Extend validation for higher n-j symbols**:
+  - [ ] Add 15j spot checks using mpmath (50-digit precision)
+  - [ ] Add 18j validation tests
+  - [ ] Build on existing T2 validation framework from history
+  - [ ] Python validation code for 15j symbols (see task details)
+
+- [ ] **Math verification TODO**:
+  - [ ] Confirm Pfaffian-based matching in product formula with symbolic check (SymPy)
+  - [ ] Verify hypergeometric structure encodes Regge symmetries
+  - [ ] Add explicit symmetry examples for regge1958/regge1959 (if evaluations reveal gaps)
+
+- [ ] **Halt condition check**:
+  - [ ] Review annotation findings for citation gaps (e.g., missing Regge symmetries)
+  - [ ] If critical issues found, pause submission and address
+
+- [ ] **Final manuscript polish**:
+  - [ ] Run pdflatex build test
+  - [ ] Check all equations are numbered sequentially
+  - [ ] Verify appendices are clearly labeled with `\appendix`
+  - [ ] Aim for 20-30 pages (typical for JMP papers)
+  - [ ] Emphasize novelty in abstract/introduction (first closed-form for arbitrary trivalent graphs)
 
 ## PDF Conversions and Citation Evaluations
 
