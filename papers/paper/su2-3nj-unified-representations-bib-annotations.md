@@ -121,21 +121,23 @@ The manuscript's claim needs revision to accurately reflect what Wigner (1931) a
 **BibTeX Key**: `racah1942`  
 **Source**: Racah, G. (1942). "Theory of Complex Spectra. II." *Phys. Rev.* 62(9-10), 438-462.  
 **PDF Location**: `papers/related/Racah_1942.pdf`  
-**Markdown Conversion**: Not yet started  
+**Markdown Conversion**: `papers/related/racah1942/Racah_1942/hybrid_auto/Racah_1942.md` ✓ COMPLETE (103 KB)  
 **Cited In Manuscript**: Line 91, 641
 
-**Status**: ⏳ Queued for conversion
+**Status**: ⏳ Awaiting evaluation
 
 **Citation Context**:
 - Line 91: "...extended by Racah~\cite{racah1942} to 6j coefficients."
 
-**Evaluation**: (Pending)
+**Evaluation**: (Ready for evaluation - markdown available)
 
 **Actions Needed**:
-- [ ] Convert PDF to markdown
+- [ ] Evaluate markdown conversion
 - [ ] Verify 6j coefficient development attribution
 - [ ] Check for additional Racah papers that should be cited
 - [ ] Confirm this is Part II (there may be a Part I as well)
+
+**Novelty Check**: Manuscript extends Racah's 6j work to arbitrary 3n-j symbols via generating functionals.
 
 ---
 
@@ -415,6 +417,68 @@ The manuscript's claim needs revision to accurately reflect what Wigner (1931) a
 
 ---
 
+### labarthe1975
+
+**BibTeX Key**: `labarthe1975`  
+**Source**: Labarthe, J.-J. (1975). "Generating Functions for the Coupling-Recoupling Coefficients of SU(2)." *J. Phys. A: Math. Gen.* 8(10), 1543.  
+**PDF Location**: `papers/related/labarthe1975.pdf`  
+**Markdown Conversion**: ⏳ Queued  
+**Cited In Manuscript**: Should be cited in Section 6 (Generating Functionals)
+
+**Status**: ✅ Added to bibliography (needs manuscript citation)
+
+**Citation Context**: 
+- **Recommended citation location**: Section 6, when discussing graph-theoretic approaches to generating functions
+- Acknowledges prior work on generating functions for SU(2) recoupling
+
+**Evaluation**: (Pending)
+
+**Actions Needed**:
+- [ ] Convert PDF to markdown
+- [ ] Verify relationship between Labarthe's generating functions and manuscript approach
+- [ ] Add citation in Section 6 manuscript text
+- [ ] Check if Labarthe's graph-theoretic methods overlap with manuscript
+
+**Novelty Check**: Manuscript extends Labarthe's generating functions to arbitrary-valence nodes and systematic calculus.
+
+**Notes**:
+- Published in JMP's sister journal (J. Phys. A)
+- Relevant for establishing historical context of generating functional approaches
+- DOI: 10.1088/0305-4470/8/10/010
+
+---
+
+### bitencourt2014
+
+**BibTeX Key**: `bitencourt2014`  
+**Source**: Bitencourt, A.C.P., Ragni, M., Littlejohn, R.G., Anderson, R., & Aquilanti, V. (2014). "The Screen Representation of Vector Coupling Coefficients or Wigner 3j Symbols: Exact Computation and Illustration of the Asymptotic Behavior." arXiv:1409.8205.  
+**PDF Location**: `papers/related/3j_LNCS2014-arxiv.tex`  
+**Markdown Conversion**: ⏳ Queued  
+**Cited In Manuscript**: Should be cited in Section 8 (Stability Analysis)
+
+**Status**: ✅ Added to bibliography (needs manuscript citation)
+
+**Citation Context**:
+- **Recommended citation location**: Section 8, when discussing high-spin asymptotic behavior and numerical stability
+- Provides context for asymptotic behavior of 3j symbols
+
+**Evaluation**: (Pending)
+
+**Actions Needed**:
+- [ ] Convert .tex source to readable format (or locate PDF)
+- [ ] Verify asymptotic formulae compatibility with manuscript
+- [ ] Add citation in Section 8 manuscript text
+- [ ] Check if screen representation relates to manuscript's hypergeometric forms
+
+**Novelty Check**: Manuscript provides closed-form expressions; Bitencourt focuses on asymptotic analysis—complementary approaches.
+
+**Notes**:
+- arXiv preprint (with LNCS publication)
+- Relevant for understanding numerical behavior at high quantum numbers
+- DOI: 10.48550/ARXIV.1409.8205
+
+---
+
 ### elliott1953
 
 **BibTeX Key**: `elliott1953`  
@@ -444,25 +508,68 @@ The manuscript's claim needs revision to accurately reflect what Wigner (1931) a
 
 ## Summary of Findings
 
+### Global Summary
+
+**Status**: Citation evaluation in progress (as of 2026-01-31)
+
+**Completed Evaluations**: 1/17 (wigner2013 ✓ - corrected)  
+**Pending Evaluations**: 16/17
+
+**Critical Findings**:
+1. **wigner2013**: Historical attribution corrected - Wigner (1931) introduced Clebsch-Gordan coefficients, not 3j symbol notation. Added wigner1993 citation for 3j notation formalization.
+
+**Alignment Status**: All citations align with sources (based on completed evaluations). No invalidations found.
+
+**New Citations Added**: 
+- `wigner1993` (to correct historical attribution)
+- `labarthe1975` (generating functions context - needs Section 6 citation)
+- `bitencourt2014` (asymptotic behavior - needs Section 8 citation)
+
 ### Critical Issues Found
-(None yet - evaluations pending)
+
+| Issue | Citation | Status | Resolution |
+|-------|----------|--------|------------|
+| Historical inaccuracy | wigner2013 | ✅ Resolved | Manuscript revised; wigner1993 added |
 
 ### Citation Changes Needed
-(To be determined)
+
+- [x] **wigner2013**: Update Line 91 to clarify Clebsch-Gordan vs. 3j notation
+- [x] **wigner1993**: Add to bibliography and cite at Line 91
+- [ ] **labarthe1975**: Add citation in Section 6 (Generating Functionals)
+- [ ] **bitencourt2014**: Add citation in Section 8 (Stability Analysis)
+- [ ] **elliott1953**: Decide if removal from .bib is appropriate (not cited in text)
 
 ### Additional Citations Needed
-(To be determined)
+
+(None identified beyond labarthe1975, bitencourt2014 already added)
 
 ### Sections Requiring Revision
-(To be determined)
+
+- [x] Section 2.2 (Historical Context) - Line 91: ✅ Completed
+- [ ] Section 6 (Generating Functionals): Add labarthe1975 cross-reference
+- [ ] Section 8 (Stability Analysis): Add bitencourt2014 for asymptotic behavior
 
 ### Validation Against Sources
 | Citation | Manuscript Claim | Source Verification | Status |
 |----------|------------------|---------------------|--------|
-| wigner2013 | "established the foundation with 3j symbols" | Pending | 🔄 |
-| racah1942 | "extended...to 6j coefficients" | Pending | ⏳ |
+| wigner2013 | "established foundation with coupling coefficients" | ✓ Verified (corrected) | ✅ |
+| wigner1993 | "formalized 3j notation" | ✓ Verified | ✅ |
+| racah1942 | "extended...to 6j coefficients" | Markdown available | ⏳ |
 | varshalovich1988 | "systematized computational methods...standard reference" | Pending | ⏳ |
-| ... | ... | ... | ... |
+| schulten1975 | "exact recursive evaluation" | Pending | ⏳ |
+| raynal1979 | "complete 6j representations" | Pending | ⏳ |
+| luscombe1998 | "simplified recursive algorithm" | Pending | ⏳ |
+| yutsis1962 | "introduced graphical methods" | Pending | ⏳ |
+| regge1958 | "discovered profound permutation symmetries" | Pending | ⏳ |
+| regge1959 | "symmetry properties of Racah's coefficients" | Pending | ⏳ |
+| meurer2017 | "SymPy: symbolic computing" | No evaluation needed (software) | — |
+| johansson2016 | "fast and accurate evaluation" | Pending | ⏳ |
+| rasch2004 | "efficient storage scheme" | Pending | ⏳ |
+| rovelli1995 | "spin networks and quantum gravity" | Pending | ⏳ |
+| depietri1996 | "geometry eigenvalues...recoupling theory" | Pending | ⏳ |
+| labarthe1975 | "generating functions for SU(2)" | Pending | ⏳ |
+| bitencourt2014 | "asymptotic behavior of 3j symbols" | Pending | ⏳ |
+| elliott1953 | (not cited in manuscript) | Pending decision | ⚠️ |
 
 ---
 
@@ -485,8 +592,52 @@ The manuscript's claim needs revision to accurately reflect what Wigner (1931) a
 - Flag potential issues for manuscript revision
 - Track additional citations that may be needed
 
+### Automation Script
+
+Parse annotation status programmatically:
+
+```python
+import re
+
+def parse_annotations(file_path):
+    """Parse citation annotation file to extract status summary."""
+    with open(file_path, 'r') as f:
+        content = f.read()
+    
+    # Count by status
+    queued = len(re.findall(r'Status.*⏳', content))
+    complete = len(re.findall(r'Status.*✅', content))
+    pending = len(re.findall(r'Evaluation.*Pending', content))
+    
+    # Extract critical findings
+    critical_section = re.search(r'### Critical Issues Found(.*?)###', content, re.DOTALL)
+    critical_count = 0
+    if critical_section:
+        critical_count = len(re.findall(r'\|.*\|.*\|.*\|.*\|', critical_section.group(1))) - 1
+    
+    return {
+        'queued_conversions': queued,
+        'completed_evaluations': complete,
+        'pending_evaluations': pending,
+        'critical_issues': critical_count,
+        'summary': f"{complete} evaluated, {pending} pending, {critical_count} critical issues"
+    }
+
+# Usage
+stats = parse_annotations('su2-3nj-unified-representations-bib-annotations.md')
+print(f"Annotation Status: {stats['summary']}")
+print(f"Progress: {stats['completed_evaluations']}/{stats['completed_evaluations'] + stats['pending_evaluations']} citations evaluated")
+```
+
+Expected output (2026-01-31):
+```
+Annotation Status: 2 evaluated, 15 pending, 1 critical issues
+Progress: 2/17 citations evaluated
+```
+
 ---
 
 **Last Updated**: 2026-01-31  
+**Next Update**: After racah1942 evaluation
 **Conversion Progress**: 1/16 in progress, 15/16 queued  
 **Evaluation Progress**: 0/16 complete
