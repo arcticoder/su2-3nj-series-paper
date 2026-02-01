@@ -1268,3 +1268,140 @@ Key fixes applied:
 The script is currently executing mineru for the unconverted papers. You can monitor progress by checking the terminal output or the generated directories in `~/Code/asciimath/su2-3nj-series-paper/papers/related`. If any papers fail to process, you can re-run the script as it will skip already completed ones.
 <!-- ------ -->
 ---
+<!-- ------ -->
+---
+
+## Session Summary — Journal Submission Preparation & Citation Verification (2026-01-31)
+
+### What Was Accomplished
+
+#### 1. Manuscript Conversion to RevTeX 4.2 for JMP Submission
+- **Converted** document class from `amsart` to `revtex4-2` with AIP/JMP options
+- **Updated** author/affiliation format to RevTeX standards
+- **Changed** bibliography style from `plain` to `aipnum4-2` (AIP numbering)
+- **Added** PACS codes: 02.20.Qs (Lie algebras), 03.65.Fd (quantum mechanics), 04.60.Pp (loop quantum gravity)
+- **Removed** custom geometry/margin settings (RevTeX handles layout automatically)
+- **Target**: Journal of Mathematical Physics (JMP)
+- **arXiv categories**: math-ph (primary), quant-ph, gr-qc (cross-list)
+
+#### 2. File Organization and Structure
+- **Moved** `su2-3nj-unified-representations-bib-annotations.md` from `papers/` to `papers/paper/` directory (same location as .bib and .tex files)
+- **Created** `docs/SU2-TODO-BLOCKED.md` for tracking blocked tasks
+- **Updated** `docs/SU2-TODO.md` with Phase 3 submission preparation tasks
+
+#### 3. Citation Verification and Annotations
+
+**wigner2013 Historical Correction** (✅ Completed):
+- **Identified** critical historical inaccuracy: Manuscript claimed Wigner (1931) introduced "3j symbols"
+- **Verified** via full-text markdown analysis (10,005 lines): Wigner (1931) introduced *Clebsch-Gordan coefficients* ($s_{L\mu\nu}$), NOT 3j notation
+- **Added** `wigner1993` citation (Wigner 1940 work, 1993 reprint) to properly attribute 3j symbol notation
+- **Revised** manuscript lines 91 and 641 to correctly distinguish coupling coefficients from 3j notation
+- **Status**: Manuscript now historically accurate; annotations documented in detail
+
+**racah1942 Conversion** (✅ Complete):
+- **Confirmed** markdown conversion available: `papers/related/racah1942/Racah_1942/hybrid_auto/Racah_1942.md` (103 KB)
+- **Status**: Ready for evaluation (6j coefficient attribution)
+
+**New Citations Added to Bibliography**:
+1. **labarthe1975**: J.-J. Labarthe (1975), "Generating Functions for the Coupling-Recoupling Coefficients of SU(2)"
+   - Target location: Section 6 (Generating Functionals)
+   - Provides context for graph-theoretic generating function approaches
+   
+2. **bitencourt2014**: Bitencourt et al. (2014), "The Screen Representation...Asymptotic Behavior"
+   - Target location: Section 8 (Stability Analysis)
+   - Relevant for high-spin asymptotic behavior
+
+**Annotations File Enhancements**:
+- Added **Novelty Check** field for each citation to document how manuscript extends prior work
+- Added **Global Summary** section with statistics (2/17 citations evaluated, 1 critical issue resolved)
+- Added **Python automation script** for parsing annotation progress
+- Created comprehensive **Validation Against Sources** matrix tracking all 17 citations
+- Documented **Citation Changes Needed** and **Sections Requiring Revision**
+
+#### 4. Tracking Updates
+
+**TSV File** (`energy/docs/downloaded_paper_locations.tsv`):
+- **Fixed** malformed `wigner1993` entry (all data was concatenated in first column)
+- **Updated** `wigner1993`: Status = "Referenced - Annotation Complete"
+- **Updated** `racah1942`: Converted Path = `.../Racah_1942.md`, Status = "Converted with MinerU - Awaiting Evaluation"
+
+**TODO Updates**:
+- Added **Phase 3: Journal Submission Preparation** section with Q1 2026 timeline
+- 8 submission readiness tasks defined (RevTeX conversion ✅, bibliography checks, arXiv bundle, validation extensions, etc.)
+- Marked RevTeX conversion as complete with timestamp
+
+#### 5. Git Commits
+
+**Commit 1** (be892e6): `refactor: Convert manuscript to RevTeX 4.2 for JMP submission`
+- RevTeX document class updates
+- File reorganization (moved annotations file)
+- Created SU2-TODO-BLOCKED.md
+- Added Phase 3 tasks to SU2-TODO.md
+
+**Commit 2** (d791a7b): `docs: Enhance citation annotations and update tracking`
+- Added labarthe1975 and bitencourt2014 to annotations
+- Updated racah1942 status to conversion complete
+- Added automation script and novelty checks
+- Fixed and updated TSV tracking file
+
+### Key Metrics
+
+**Citation Verification Progress**: 2/17 (12%)
+- ✅ wigner2013: Historical inaccuracy corrected
+- ✅ wigner1993: Added for accuracy
+- ⏳ 15 citations awaiting evaluation (markdown conversions in progress)
+
+**Critical Issues**: 1 found, 1 resolved
+- wigner2013 attribution corrected from "3j symbols" to "coupling coefficients"
+
+**New Citations**: 2 added (labarthe1975, bitencourt2014)
+
+**Manuscript Readiness**: 
+- RevTeX 4.2 conversion: ✅ Complete
+- Bibliography completeness: 🔄 In progress
+- arXiv bundle: ⏳ Pending
+- Extended validation: ⏳ Pending
+
+### Files Modified
+
+**su2-3nj-series-paper**:
+- `papers/paper/su2-3nj-unified-representations.tex` (RevTeX conversion)
+- `papers/paper/su2-3nj-unified-representations-bib-annotations.md` (moved, enhanced)
+- `docs/SU2-TODO.md` (Phase 3 tasks added)
+- `docs/SU2-TODO-BLOCKED.md` (created)
+
+**energy**:
+- `docs/downloaded_paper_locations.tsv` (fixed wigner1993, updated racah1942)
+
+### Next Priorities (from SU2-TODO.md Phase 3)
+
+1. **Bibliography Completeness**:
+   - Verify all DOIs present
+   - Decide on elliott1953 (remove if not cited)
+   - Add manuscript citations for labarthe1975 (Section 6) and bitencourt2014 (Section 8)
+
+2. **Citation Evaluations**:
+   - Evaluate racah1942 markdown (verify 6j attribution)
+   - Continue with varshalovich1988, schulten1975, etc.
+   - Complete 15 remaining evaluations
+
+3. **Extended Validation**:
+   - Add 15j/18j spot checks using mpmath
+   - Build Python validation framework
+
+4. **arXiv Preparation**:
+   - Run `arxiv-collector` validation
+   - Package repository code as ancillary files
+   - Test complete build
+
+**Timeline**: Submit to JMP by end of Q1 2026 (March 31, 2026)
+
+### Documentation Quality Notes
+
+- **Historical Accuracy**: Wigner (1931) citation now correctly attributes coupling coefficients; 3j notation properly dated to ~1940
+- **Citation Rigor**: Every bibliographic entry will be verified against source material
+- **Traceability**: Automation script enables real-time progress tracking
+- **Submission Readiness**: RevTeX format ensures JMP compatibility from the start
+
+<!-- ------ -->
+---
